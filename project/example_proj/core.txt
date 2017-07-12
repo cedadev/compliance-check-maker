@@ -1,0 +1,5 @@
+check_id	check_name	check_level	vocabulary_ref	modifiers	comments
+cr01	GlobalAttrRegexCheck	HIGH		attribute=Conventions;regex=CF-\d+\.\d+
+cr02	GlobalAttrRegexCheck	HIGH		attribute=source;regex=\w+
+cr03	OneMainVariablePerFileCheck	HIGH
+cr04	ValidGlobalAttrsMatchFileNameCheck	HIGH	eustace-team:eustace	delimiter=_;extension=.nc;order=institution_id,realm,frequency

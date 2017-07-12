@@ -1,0 +1,17 @@
+check_id	check_name	check_level	vocabulary_ref	modifiers	comments
+cr01	ValidGlobalAttrsMatchFileNameCheck	HIGH	ukcp:ukcp18	delimiter=_;extension=.nc;order=institution_id,realm,frequency	
+cr02	GlobalAttrRegexCheck	HIGH		attribute=Conventions;regex=CF-1\.6	
+cr03	GlobalAttrRegexCheck	HIGH		attribute=source;regex=.{4,}	Should represent the original data source(s). E.g. 'HadGEM3-ES runs'.
+cr04	GlobalAttrRegexCheck	HIGH		attribute=project_id;regex=UKCP18	Must be: 'UKCP18'
+cr05	GlobalAttrRegexCheck	HIGH		attribute=contact;regex=.{4,}	
+cr06	GlobalAttrRegexCheck	MEDIUM		attribute=history;regex=.{4,}	
+cr07	GlobalAttrRegexCheck	MEDIUM		attribute=references;regex=.{4,}	
+cr08	GlobalAttrRegexCheck	HIGH		attribute=product_version;regex=.{4,}	
+cr09	GlobalAttrRegexCheck	HIGH		attribute=title;regex=.{4,}	Should be a succinct description of the data.
+cr10	GlobalAttrRegexCheck	HIGH		attribute=summary;regex=.{20,}	Should be a paragraph describing the data.
+cr11	GlobalAttrRegexCheck	HIGH		attribute=creator_name;regex=.{4,}	Name of creator
+cr12	GlobalAttrRegexCheck	HIGH		attribute=creator_email;regex=.+@.+\..+	E-mail address of creator
+cr13	GlobalAttrVocabCheck	HIGH	ukcp:ukcp18	attribute=frequency;vocab_lookup=canonical_name	The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
+cr14	GlobalAttrVocabCheck	HIGH	ukcp:ukcp18	attribute=institution_id;vocab_lookup=canonical_name	The 'institution_id' global attribute must exist and have a value present in the relevant vocabulary.
+cr15	GlobalAttrVocabCheck	HIGH	ukcp:ukcp18	attribute=institution;vocab_lookup=description	The 'institution' global attribute must exist and have a value present in the relevant vocabulary.
+cr16	GlobalAttrRegexCheck	MEDIUM		attribute=creation_date;regex=\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*	Format:  YYYY-MM-DDThh:mm:ss

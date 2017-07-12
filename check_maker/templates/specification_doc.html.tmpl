@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Compliance checks for project: {{ project_metadata.label }} (version: {{ project_metadata.checks_version }})</title>
+</head>
+<body style="margin: 10px;">
+
+    <h1>Compliance checks for project: {{ project_metadata.description }} ({{ project_metadata.label }}) (version: {{ project_metadata.checks_version }})</h1>
+
+    <h2>Test categories</h2>
+    <p>The tests are divided into the following categories:</p>
+
+    <ul>
+    {% for category, details in categories.items() %}
+        <li>{{ details.description }} ({{ category }})</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Tests</h2>
+
+    {% for category, checks in content.items() %}
+        <h3>Test: {{ categories[category].description }}</h3>
+        <p>The following table details the checks for: {{ categories[category].description }} ({{ category }}).</p>
+
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                {% for header in table_headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for check in checks %}
+                <tr>
+                {% for item in check %}
+                        <td>{{ item|safe }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+    {% endfor %}
+
+</body>
+</html>

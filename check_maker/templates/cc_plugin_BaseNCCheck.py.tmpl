@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+"""
+{{ details.ccPluginPackage }}
+
+Compliance Test Suite: {{ details.description }}
+"""
+
+import os
+from netCDF4 import Dataset
+
+# Import base objects from compliance checker
+from compliance_checker.base import Result, BaseNCCheck
+
+# Restrict which vocabs will load (for efficiency)
+os.environ["ESSV_VOCABS_ACTIVE"] = "{{ project_metadata.vocab_authority }}"
+
+# Import checklib
+import {{ details.checklibPackage }} as check_package
+
+
+class {{ details.ccPluginClass }}(BaseNCCheck):
+    register_checker = True
+    name = '{{ details.ccPluginId }}'
+
+
+    def setup(self, ds):
+        pass
+
+    {% for check in checks %}
+    def check_{{ check.check_id }}(self, ds):
+        return check_package.{{ check.check_name }}(kwargs={{ check.kwargs }},
+                                                    level="{{ check.check_level }}",
+                                                    vocabulary_ref="{{ check.vocabulary_ref }}")(ds)
+    {% endfor %}

@@ -1,0 +1,4 @@
+check_id	check_name	check_level	vocabulary_ref	modifiers	comments
+fi01	FileSizeCheck	MEDIUM		threshold=2;strictness=soft	This is an advisory check
+fi02	FileSizeCheck	HIGH		threshold=4;strictness=hard	This is a strict check
+fi03	FileNameStructureCheck	HIGH		delimiter=_;extension=.nc

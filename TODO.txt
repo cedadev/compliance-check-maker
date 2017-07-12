@@ -1,0 +1,10 @@
+ - Need to make responses look more like corrective actions, such as:
+
+§2.6.1 Global Attribute Conventions includes CF-1.6	2	Conventions global attribute does not contain "CF-1.6"
+§2.6.2 Recommended Attributes	2	institution should be defined
+§2.6.2 Recommended Attributes	2	source should be defined
+§2.6.2 Recommended Attributes	2	references should be defined
+§2.6.2 Recommended Global Attributes	2	global attribute title should exist and be a non-empty string
+§2.6.2 Recommended Global Attributes	2	global attribute history should exist and be a non-empty string
+§3.3 Variable latitude has valid standard_name attribute	3	variable latitude's attribute standard_name must be a non-empty string or it should define a long_name attribute.
+§3.3 Variable longitude has valid standard_name attribute	3	variable longitude's attribute standard_name must be a non-empty string or it should define a long_name attribute.

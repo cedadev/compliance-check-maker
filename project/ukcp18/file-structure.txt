@@ -1,0 +1,2 @@
+check_id	check_name	check_level	vocabulary_ref	modifiers	comments
+fs01	OneMainVariablePerFileCheck	HIGH

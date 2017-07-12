@@ -1,0 +1,35 @@
+{
+    "categories":
+        [
+            {
+                "global-attrs": {
+                    "ccPluginClass": "EUSTACEGlobalAttrsCheck",
+                    "description": "Check core global attributes in EUSTACE files",
+                    "ccPluginId": "eustace-global-attrs",
+                    "ccPluginPackage": "cc_plugin_eustace.eustace_global_attrs",
+                    "ccPluginTemplate": "BaseNCCheck",
+                    "checklibPackage": "checklib.register.nc_file_checks_register"
+                }
+            },
+            {
+                "file-info": {
+                    "ccPluginClass": "EUSTACEFileInfoCheck",
+                    "description": "Check file names and external information about EUSTACE files",
+                    "ccPluginId": "eustace-file-info",
+                    "ccPluginPackage": "cc_plugin_eustace.eustace_file_info",
+                    "ccPluginTemplate": "BaseFileCheck",
+                    "checklibPackage": "checklib.register.file_checks_register"
+                }
+            },
+            {
+                "file-structure": {
+                    "ccPluginClass": "EUSTACEFileStructureCheck",
+                    "description": "Check structure of EUSTACE files",
+                    "ccPluginId": "eustace-file-structure",
+                    "ccPluginPackage": "cc_plugin_eustace.eustace_file_structure",
+                    "ccPluginTemplate": "BaseNCCheck",
+                    "checklibPackage": "checklib.register.nc_file_checks_register"
+                }
+            }
+        ]
+}

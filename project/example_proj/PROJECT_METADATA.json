@@ -1,0 +1,9 @@
+{
+  "canonicalName": "example",
+  "label": "Example",
+  "description": "A made up example project",
+  "vocab_authority": "",
+  "vocab_scope": "",
+  "url": "",
+  "checks_version": "0.1.0"
+}
