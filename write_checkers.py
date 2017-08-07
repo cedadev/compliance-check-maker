@@ -7,7 +7,7 @@ import simplejson
 from check_maker.renderers import write_spec_document, write_plugin_module
 from checklib.register import get_check_class
 
-GIT_REPO = "https://github.com/cedadev/compliance-check-maker"
+CHECK_LIB_GIT_REPO = "https://github.com/cedadev/compliance-check-lib"
 
 OUTPUT_DIR = "output"
 INPUTS_DIR = "project"
@@ -167,6 +167,28 @@ def _html_tidy_cell_item(item, key):
     return item
 
 
+def _get_check_url(check_module, check_class_name):
+    """
+    Returns the URL to the line in GitHub that represents that checker class.
+
+    :param check_module: python module containing check
+    :param check_class_name: name of check class
+    :return: URL to check [string].
+    """
+    # Try to grep line number for class
+    try:
+        loc_of_module = "../compliance-check-lib/{}.py".format(check_module)
+        with open(loc_of_module) as reader:
+            for n, line in enumerate(reader):
+                if line.find("class {}".format(check_class_name)) == 0:
+                    line_number = n + 1
+                    break
+    except:
+        line_number = ""
+
+    return "{}/blob/master/{}.py#L{}".format(CHECK_LIB_GIT_REPO, check_module, line_number)
+
+
 def _get_content_for_html_row(check):
     """
     Returns a list of content for each HTML cell in a table for a given check.
@@ -183,7 +205,9 @@ def _get_content_for_html_row(check):
         if attr == "python_interface":
             rel_path = item.replace(".", "/")
             base, name = os.path.split(rel_path)
-            item = "<a href='{}/tree/master/{}.py#{}'>{}</a>".format(GIT_REPO, base, name, name)
+
+            check_url = _get_check_url(base, name)
+            item = "<a href='{}'>{}</a>".format(check_url, name)
             item += "<br/>Parameters:"
 
             for key, value in check["kwargs"].items():
