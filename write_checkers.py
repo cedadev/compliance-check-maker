@@ -3,6 +3,8 @@
 import os, sys
 from collections import OrderedDict as OD
 import simplejson
+import yaml
+
 
 from check_maker.renderers import write_spec_document, write_plugin_module
 from checklib.register import get_check_class
@@ -59,6 +61,7 @@ def get_project_metadata(project):
     with open(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.json")) as reader:
         return simplejson.load(reader)
 
+
 def _parse_kwargs_string(s):
     """
     Parses string and returns a dictionary. All values are strings.
@@ -69,18 +72,24 @@ def _parse_kwargs_string(s):
     d = dict([item.split("=") for item in s.split(";")])
     return d
 
-def _build_check_specifier(check_line, keys):
-    """
-    Parse single line defining check and combines it with information from
-    the checklib registers to create detailed dictionary.
 
-    :param check_line: tab-separated line of text
-    :param keys: a list of keys
+def _build_check_specifier(check_id, dct):
+    """
+    Parse dictionary `dct` defining check and combines it with information from
+    the checklib registers to create and return detailed dictionary.
+
+    :param check_id: short ID for check
+    :param dct: dictionary of input details for check
     :return: dictionary defining details of a check.
     """
-    items = check_line.split("\t")
-    d = dict([(keys[i], value) for i, value in enumerate(items)])
+    # Clone the dictionary using empty strings for None values
+    d = {}
+    for key, value in dct.items():
+        d[key] = value or ""
+  
+    d["check_id"] = check_id
     d["kwargs"] = _parse_kwargs_string(d.get("modifiers", ""))
+
     d["vocabulary_ref"] = d.get("vocabulary_ref", "")
     d["comments"] = d.get("comments", "")
 
@@ -91,6 +100,7 @@ def _build_check_specifier(check_line, keys):
     # Update info required for rendering
     d["check_responses"] = dict([(i, response) for i, response in enumerate(check.get_messages())])
     d["description"] = check.get_description()
+
     d["check_unittest"] = "DEFAULT"
     d["python_interface"] = "{}.{}".format(cls.__module__, cls.__name__)
 
@@ -106,20 +116,21 @@ def gather_checks(project, category):
     :param category: the category of checks [string]
     :return: list of dictionaries of checks
     """
-    fname = os.path.join(INPUTS_DIR, project, "{}.txt".format(category))
+    fname = os.path.join(INPUTS_DIR, project, "{}.yml".format(category))
 
     # Read in the tab-separated set of checks for this category
     with open(fname) as reader:
-        content = [line.strip() for line in reader.readlines()]
-
-    # Get the keys from the top line
-    keys = content[0].strip().split("\t")
+        content = yaml.load(reader, Loader=yaml.Loader)
 
     checks = []
 
     # Populate a list of checks
-    for check_line in content[1:]:
-        d = _build_check_specifier(check_line, keys)
+    for check_details in content:
+
+        check_id, check_list = check_details.items()[0]
+        check_dict = dict([d.items()[0] for d in check_list])
+
+        d = _build_check_specifier(check_id, check_dict)
         d["category"] = category
         checks.append(d)
 
@@ -129,6 +140,7 @@ def gather_checks(project, category):
         raise Exception("Duplicate check IDs are not allowed. Found: {}".format(check_ids))
 
     return checks
+
 
 def write_to_json(project, category, content):
     """

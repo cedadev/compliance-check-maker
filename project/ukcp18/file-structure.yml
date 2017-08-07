@@ -1,0 +1,7 @@
+---
+- fs01:
+  - check_name:     OneMainVariablePerFileCheck
+  - check_level:    HIGH
+  - vocabulary_ref:
+  - modifiers:     
+  - comments:     
