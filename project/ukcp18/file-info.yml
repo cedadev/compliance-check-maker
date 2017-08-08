@@ -1,22 +1,22 @@
 ---
-- fi01:
-  - check_name:     FileSizeCheck 
-  - check_level:    MEDIUM
-  - vocabulary_ref:
-  - modifiers:      threshold=2;strictness=soft
-  - comments:       This is an advisory check
+- check_id:       fi01
+  check_name:     FileSizeCheck 
+  check_level:    MEDIUM
+  vocabulary_ref:
+  modifiers:      {'threshold': 2, 'strictness': 'soft'}
+  comments:       This is an advisory check
 
-- fi02:
-  - check_name:     FileSizeCheck
-  - check_level:    HIGH
-  - vocabulary_ref:
-  - modifiers:      threshold=4;strictness=hard
-  - comments:       This is an strict check
+- check_id:       fi02
+  check_name:     FileSizeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'threshold': 4, 'strictness': 'hard'}
+  comments:       This is an strict check
 
-- fi03:
-  - check_name:     FileNameStructureCheck
-  - check_level:    HIGH
-  - vocabulary_ref:
-  - modifiers:      delimiter=_;extension=.nc
-  - comments:   
+- check_id:       fi03
+  check_name:     FileNameStructureCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'delimiter': '_', 'extension': '.nc'}
+  comments:   
 

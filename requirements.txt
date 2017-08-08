@@ -1,6 +1,7 @@
 jinja2
 simplejson
-compliance-check-lib
+#compliance-check-lib
+pyyaml
 
 #=========================
 # Testing

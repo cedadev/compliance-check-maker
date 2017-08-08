@@ -73,23 +73,18 @@ def _parse_kwargs_string(s):
     return d
 
 
-def _build_check_specifier(check_id, dct):
+def _build_check_specifier(dct):
     """
     Parse dictionary `dct` defining check and combines it with information from
     the checklib registers to create and return detailed dictionary.
 
-    :param check_id: short ID for check
     :param dct: dictionary of input details for check
     :return: dictionary defining details of a check.
     """
     # Clone the dictionary using empty strings for None values
-    d = {}
-    for key, value in dct.items():
-        d[key] = value or ""
-  
-    d["check_id"] = check_id
-    d["kwargs"] = _parse_kwargs_string(d.get("modifiers", ""))
-
+    d = dict([(key, value or "") for key, value in dct.items()])
+    d["kwargs"] = d["modifiers"] or {}
+     
     d["vocabulary_ref"] = d.get("vocabulary_ref", "")
     d["comments"] = d.get("comments", "")
 
@@ -125,12 +120,8 @@ def gather_checks(project, category):
     checks = []
 
     # Populate a list of checks
-    for check_details in content:
-
-        check_id, check_list = check_details.items()[0]
-        check_dict = dict([d.items()[0] for d in check_list])
-
-        d = _build_check_specifier(check_id, check_dict)
+    for check_dict in content:
+        d = _build_check_specifier(check_dict)
         d["category"] = category
         checks.append(d)
 
@@ -220,10 +211,14 @@ def _get_content_for_html_row(check):
 
             check_url = _get_check_url(base, name)
             item = "<a href='{}'>{}</a>".format(check_url, name)
-            item += "<br/>Parameters:"
 
-            for key, value in check["kwargs"].items():
-                item += "<br/><b>{}:</b> '{}'".format(key, value)
+            if check["kwargs"]:
+                item += "<br/>Parameters:"
+
+                for key, value in check["kwargs"].items():
+                    item += "<br/><b>{}:</b> '{}'".format(key, value)
+            else: # If no parameters tell report i
+                item += "<br/>No parameters."
 
         elif attr == "check_id":
             item = "<b>{}</b>".format(item)
