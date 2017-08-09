@@ -1,4 +1,13 @@
 ---
+# Plugin interface details
+- ccPluginClass:    UKCP18GlobalAttrsCheck
+  description:      Check core global attributes in UKCP18 files
+  ccPluginId:       ukcp18-global-attrs
+  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_global_attrs
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_file_checks_register
+
+# Checks
 - check_id:       cr01
   check_name:     ValidGlobalAttrsMatchFileNameCheck
   check_level:    HIGH

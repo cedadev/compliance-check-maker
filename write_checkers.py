@@ -1,11 +1,27 @@
 #!/usr/bin/env python
 
-import os, sys
+"""
+write_checkers.py
+=================
+
+Writes checkers for a given project.
+
+Usage:
+------
+
+    write_checkers.py <project_id>
+
+"""
+
+# Standard library imports
+import os, sys, glob
 from collections import OrderedDict as OD
+
+# Third-party imports
 import simplejson
 import yaml
 
-
+# Local imports
 from check_maker.renderers import write_spec_document, write_plugin_module
 from checklib.register import get_check_class
 
@@ -25,6 +41,7 @@ CHECK_ATTRIBUTE_MAP = OD([
     ("check_unittest", "Python unittest")
 ])
 
+
 def _check_exists(dr):
     """
     Ensures a directory ``dr`` exists.
@@ -33,24 +50,18 @@ def _check_exists(dr):
     """
     if not os.path.isdir(dr): os.makedirs(dr)
 
-def get_categories(project):
+
+def get_check_defn_files(project):
     """
-    Reads in the categories of checks.
+    Returns a list of check definition YAML files for `project`.
 
-    :project: project ID [string]
-    :return: a list of categories.
+    :param project: project ID [string].
+    :return: list of file paths.
     """
-    with open(os.path.join(INPUTS_DIR, project, "CATEGORIES.json")) as reader:
-        content = simplejson.load(reader)["categories"]
+    yml_files = glob.glob(os.path.join(INPUTS_DIR, project, "*.yml"))
+    yml_files.remove(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.yml"))
+    return yml_files
 
-    resp = OD()
-
-    for item in content:
-        key = item.keys()[0]
-        value = item[key]
-        resp[key] = value
-
-    return resp
 
 def get_project_metadata(project):
     """
@@ -58,8 +69,8 @@ def get_project_metadata(project):
 
     :return: dictionary of metadata about the project.
     """
-    with open(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.json")) as reader:
-        return simplejson.load(reader)
+    with open(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.yml")) as reader:
+        return yaml.load(reader, Loader=yaml.Loader)[0]
 
 
 def _parse_kwargs_string(s):
@@ -102,27 +113,28 @@ def _build_check_specifier(dct):
     return d
 
 
-def gather_checks(project, category):
+def parse_checks_definitions(check_defn_file):
     """
-    Gathers all the checks for a single category and returns them as
-    a list of dictionaries.
+    Parses input files defining:
+      - plugin interface to compliance checker class
+      - a list of checks to implement within that class.
 
-    :project: project ID [string]
-    :param category: the category of checks [string]
-    :return: list of dictionaries of checks
+    :param check_defn_file: file path - defining the interface and checks [string]
+    :return: tuple of (plugin interface dict, list of dictionaries of checks)
     """
-    fname = os.path.join(INPUTS_DIR, project, "{}.yml".format(category))
-
-    # Read in the tab-separated set of checks for this category
-    with open(fname) as reader:
+    # Read in the tab-separated set of checks for this set of checks
+    with open(check_defn_file) as reader:
         content = yaml.load(reader, Loader=yaml.Loader)
 
+    # Check plugin interface is always first dictionary
+    plugin_interface = content[0]
+ 
     checks = []
 
-    # Populate a list of checks
-    for check_dict in content:
+    # Populate a list of checks from remaining dictionaries
+    for check_dict in content[1:]:
         d = _build_check_specifier(check_dict)
-        d["category"] = category
+        d["plugin_id"] = plugin_interface
         checks.append(d)
 
     # Check check IDs are unique
@@ -130,22 +142,22 @@ def gather_checks(project, category):
     if len(check_ids) != len(set(check_ids)):
         raise Exception("Duplicate check IDs are not allowed. Found: {}".format(check_ids))
 
-    return checks
+    return plugin_interface, checks
 
 
-def write_to_json(project, category, content):
+def write_to_json(project, plugin_id, content):
     """
     Writes to a json file.
 
     :project: project ID [string]
-    :param category: category [string]
+    :param plugin_id: python plugin ID [string]
     :param content: content as a list of dictionaries.
     :return: None
     """
     # Set up output path
     output_dir = os.path.join(OUTPUT_DIR, project, "json")
     _check_exists(output_dir)
-    output_path = os.path.join(output_dir, "{}.json".format(category))
+    output_path = os.path.join(output_dir, "{}.json".format(plugin_id))
 
     # Write output to JSON
     with open(output_path, 'w') as writer:
@@ -228,12 +240,13 @@ def _get_content_for_html_row(check):
     return contents
 
 
-def write_specification(project, categories):
+def write_specification(project, plugin_interfaces, checks_dict):
     """
     Writes specification file in HTML format.
 
     :project: project ID [string]
-    :param categories: dictionary of categories
+    :param plugin_interfaces: ordered dictionary of python plugin interfaces
+    :param checks_dict: dictionary of details of all checks.
     :return: None
     """
     project_metadata = get_project_metadata(project)
@@ -243,33 +256,33 @@ def write_specification(project, categories):
     _check_exists(output_dir)
     output_path = os.path.join(output_dir, "{}_data_specification_{}.html".format(project,
                                                                                   project_metadata["checks_version"]))
-
     content = OD()
 
     # Build content
-    for category in categories:
-        checks = gather_checks(project, category)
-        content[category] = [_get_content_for_html_row(check) for check in checks]
+    for plugin_interface in plugin_interfaces:
+        checks = checks_dict[plugin_interface]
+        content[plugin_interface] = [_get_content_for_html_row(check) for check in checks]
 
     check_headers = CHECK_ATTRIBUTE_MAP.values()
 
-    # Write a JSON file for each category
-    write_spec_document(project_metadata, categories, content, check_headers, output_path)
+    # Write the HTML specification document
+    write_spec_document(project_metadata, plugin_interfaces, content, check_headers, output_path)
 
     print "Wrote: {}".format(output_path)
 
 
-def write_cc_plugin_modules(project, categories):
+def write_cc_plugin_modules(project, plugin_interfaces, checks_dict):
     """
     Writes CC plugin modules in python.
 
     :project: project ID [string]
-    :param categories: dictionary of categories
+    :param plugin_interfaces: ordered dictionary of python plugin interfaces
+    :param checks_dict: ditionary of checks
     :return: None
     """
     project_metadata = get_project_metadata(project)
 
-    for category, details in categories.items():
+    for plugin_id, details in plugin_interfaces.items():
 
         # Set up output path
         output_dir = os.path.join(OUTPUT_DIR, project, "py")
@@ -278,10 +291,10 @@ def write_cc_plugin_modules(project, categories):
         output_path = os.path.join(output_dir, "{}.py".format(details["ccPluginPackage"].split(".")[1]))
 
         # Build content
-        checks = gather_checks(project, category)
+        checks = checks_dict[plugin_id]
 
-        # Write a JSON file for each category
-        write_plugin_module(project_metadata, category, details, checks, output_path)
+        # Write a JSON file for each plugin
+        write_plugin_module(project_metadata, plugin_id, details, checks, output_path)
 
         print "Wrote: {}".format(output_path)
 
@@ -293,20 +306,31 @@ def run(project):
     :project: project ID [string]
     :return: None
     """
-    # Gather the data first as a list of dictionaries
-    categories = get_categories(project)
+    # Gather the data first as a list of file paths
+    check_defn_files = get_check_defn_files(project)
 
-    # Write a JSON file for each category
-    for category in categories:
-        checks = gather_checks(project, category)
+    # Collect each of the plugin interface dicts in a list
+    plugin_interfaces = OD()
+
+    # Collect up dictionary of checks
+    checks_dict = {}
+
+    # Write a JSON file for each plugin
+    for check_defn_file in check_defn_files:
+        plugin_interface, checks = parse_checks_definitions(check_defn_file)
+        plugin_id = plugin_interface['ccPluginId']
+        plugin_interfaces[plugin_id] = plugin_interface
+
+        checks_dict[plugin_id] = checks
+
         content = {"checks": checks}
-        write_to_json(project, category, content)
+        write_to_json(project, plugin_id, content)
 
     # Write the specification doc
-    write_specification(project, categories)
+    write_specification(project, plugin_interfaces, checks_dict)
 
-    # Write python plugin classes for each category
-    write_cc_plugin_modules(project, categories)
+    # Write python plugin classes for each plugin
+    write_cc_plugin_modules(project, plugin_interfaces, checks_dict)
 
 
 def main():

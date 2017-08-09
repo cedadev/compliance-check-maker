@@ -16,12 +16,12 @@ env = Environment(
 )
 
 
-def write_spec_document(project_metadata, categories, content, test_attributes, filepath):
+def write_spec_document(project_metadata, plugin_interfaces, content, test_attributes, filepath):
     """
     Renders content of multiple tests into a specification document.
 
     :param project_metadata: dictionary of high-level metadata.
-    :param categories: list of categories [strings]
+    :param plugin_interfaces: list of plugin_interfaces [strings]
     :param content: a dictionary of items to send into template.
     :param test_attributes: a list of attribute names (for table headers).
     :param filepath: output path to write to [string]
@@ -30,7 +30,7 @@ def write_spec_document(project_metadata, categories, content, test_attributes, 
     template = env.get_template('specification_doc.html.tmpl')
     context = {
         "project_metadata": project_metadata,
-        "categories": categories,
+        "categories": plugin_interfaces,
         "content": content,
         "table_headers": test_attributes
     }
@@ -39,13 +39,13 @@ def write_spec_document(project_metadata, categories, content, test_attributes, 
         writer.write(template.render(context))
 
 
-def write_plugin_module(project_metadata, category, details, checks, filepath):
+def write_plugin_module(project_metadata, plugin_id, details, checks, filepath):
     """
     Renders a python plugin module based on a template.
 
     :param project_metadata: dictionary of high-level metadata.
-    :param category: category name [string]
-    :param details: dictionary of category information.
+    :param plugin_id: python plugin ID [string]
+    :param details: dictionary of information about the plugin.
     :param checks: a list of checks to send into template.
     :param filepath: output path to write to [string]
     :return: None
@@ -54,7 +54,7 @@ def write_plugin_module(project_metadata, category, details, checks, filepath):
 
     context = {
         "project_metadata": project_metadata,
-        "category": category,
+        "plugin_id": plugin_id,
         "details": details,
         "checks": checks
     }

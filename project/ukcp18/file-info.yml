@@ -1,4 +1,13 @@
 ---
+# Plugin interface details
+- ccPluginClass:    UKCP18FileInfoCheck
+  description:      Check file names and external information about UKCP18 files
+  ccPluginId:       ukcp18-file-info
+  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_file_info
+  ccPluginTemplate: BaseFileCheck
+  checklibPackage:  checklib.register.file_checks_register
+  
+# Checks
 - check_id:       fi01
   check_name:     FileSizeCheck 
   check_level:    MEDIUM

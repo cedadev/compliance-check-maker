@@ -1,0 +1,9 @@
+---
+# Project metadata
+- canonicalName:    ukcp18
+  label:            UKCP18
+  description:      UK Climate Projections 2018
+  vocab_authority:  ukcp
+  vocab_scope:      ukcp18
+  url: 
+  checks_version: 0.1.0
