@@ -14,7 +14,7 @@ Usage:
 """
 
 # Standard library imports
-import os, sys, glob
+import os, sys, glob, re
 from collections import OrderedDict as OD
 
 # Third-party imports
@@ -107,8 +107,9 @@ def _build_check_specifier(dct):
     d["check_responses"] = dict([(i, response) for i, response in enumerate(check.get_messages())])
     d["description"] = check.get_description()
 
-    d["check_unittest"] = "DEFAULT"
+    # Define python interfaces
     d["python_interface"] = "{}.{}".format(cls.__module__, cls.__name__)
+    d["check_unittest"] = ""
 
     return d
 
@@ -204,6 +205,32 @@ def _get_check_url(check_module, check_class_name):
     return "{}/blob/master/{}.py#L{}".format(CHECK_LIB_GIT_REPO, check_module, line_number)
 
 
+def _get_unittest_details(check_class_name):
+    """
+    Returns the information about the module in GitHub that contains unit tests for this class.
+    Response is a tuple of (unittest_module_name, unittest_url).
+
+    :param check_class_name: name of check class
+    :return: Tuple of (unittest_module_name, URL).
+    """
+    # Grep each module in the unittests folder until we match a function name with
+    # the check class name
+    candidate_modules = glob.glob("../compliance-check-lib/checklib/test/test_*.py")
+
+    for mod in candidate_modules:
+
+        with open(mod) as reader:
+            for line in reader:
+
+                if re.match("^def .*{}".format(check_class_name), line):
+                    module_name = os.path.split(mod)[-1]
+                    url = "{}/blob/master/checklib/test/{}".format(CHECK_LIB_GIT_REPO, module_name)
+                    return module_name, url
+
+    print ("[WARNING] Could not locate unit test for: {}.".format(check_class_name))
+    return "", ""
+
+
 def _get_content_for_html_row(check):
     """
     Returns a list of content for each HTML cell in a table for a given check.
@@ -231,6 +258,13 @@ def _get_content_for_html_row(check):
                     item += "<br/><b>{}:</b> '{}'".format(key, value)
             else: # If no parameters tell report i
                 item += "<br/>No parameters."
+
+        elif attr == "check_unittest":
+            name = check['python_interface'].split(".")[-1]
+            unittest_module, unittest_url = _get_unittest_details(name)
+            
+            if unittest_module:
+                item = "<a href='{}'>{}</a>".format(unittest_url, unittest_module)
 
         elif attr == "check_id":
             item = "<b>{}</b>".format(item)
