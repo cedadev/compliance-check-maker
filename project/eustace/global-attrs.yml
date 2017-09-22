@@ -34,7 +34,7 @@
   check_level:    HIGH
   vocabulary_ref: 
   modifiers:      {'attribute': 'project_id', 'regex': 'EUSTACE'}
-  comments:       Must be: 'EUSTACE'
+  comments:       Must be 'EUSTACE'
 
 - check_id:       cr05
   check_name:     GlobalAttrRegexCheck
