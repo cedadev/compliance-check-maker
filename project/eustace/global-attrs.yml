@@ -107,13 +107,6 @@
   comments:       The 'institution_id' global attribute must exist and have a value present in the relevant vocabulary.
 
 - check_id:       cr15
-  check_name:     GlobalAttrVocabCheck
-  check_level:    HIGH
-  vocabulary_ref: eustace-team:eustace
-  modifiers:      {'attribute': 'institution', 'vocab_lookup': 'description'}
-  comments:       The 'institution' global attribute must exist and have a value present in the relevant vocabulary.
-
-- check_id:       cr16
   check_name:     GlobalAttrRegexCheck
   check_level:    MEDIUM
   vocabulary_ref: 
