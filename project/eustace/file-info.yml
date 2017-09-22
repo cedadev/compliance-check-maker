@@ -1,9 +1,9 @@
 ---
 # Plugin interface details
-- ccPluginClass:    UKCP18FileInfoCheck
-  description:      Check file names and external information about UKCP18 files
-  ccPluginId:       ukcp18-file-info
-  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_file_info
+- ccPluginClass:    EUSTACEFileInfoCheck
+  description:      Check file names and external information about EUSTACE files
+  ccPluginId:       eustace-file-info
+  ccPluginPackage:  cc_plugin_eustace.eustace_file_info
   ccPluginTemplate: BaseFileCheck
   checklibPackage:  checklib.register.file_checks_register
   

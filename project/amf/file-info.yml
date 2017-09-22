@@ -1,16 +1,16 @@
 ---
 # Plugin interface details
-- ccPluginClass:    UKCP18FileInfoCheck
-  description:      Check file names and external information about UKCP18 files
-  ccPluginId:       ukcp18-file-info
-  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_file_info
+- ccPluginClass:    AMFFileInfoCheck
+  description:      Check file names and external information about AMF files
+  ccPluginId:       amf-file-info
+  ccPluginPackage:  cc_plugin_amf.amf_file_info
   ccPluginTemplate: BaseFileCheck
   checklibPackage:  checklib.register.file_checks_register
   
 # Checks
 - check_id:       fi01
   check_name:     FileSizeCheck 
-  check_level:    LOW
+  check_level:    MEDIUM
   vocabulary_ref:
   modifiers:      {'threshold': 2, 'strictness': 'soft'}
   comments:       This is an advisory check
@@ -20,7 +20,7 @@
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'threshold': 4, 'strictness': 'hard'}
-  comments:       This is a strict check
+  comments:       This is an strict check
 
 - check_id:       fi03
   check_name:     FileNameStructureCheck

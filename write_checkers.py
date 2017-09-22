@@ -146,27 +146,6 @@ def parse_checks_definitions(check_defn_file):
     return plugin_interface, checks
 
 
-def write_to_json(project, plugin_id, content):
-    """
-    Writes to a json file.
-
-    :project: project ID [string]
-    :param plugin_id: python plugin ID [string]
-    :param content: content as a list of dictionaries.
-    :return: None
-    """
-    # Set up output path
-    output_dir = os.path.join(OUTPUT_DIR, project, "json")
-    _check_exists(output_dir)
-    output_path = os.path.join(output_dir, "{}.json".format(plugin_id))
-
-    # Write output to JSON
-    with open(output_path, 'w') as writer:
-        simplejson.dump(content, writer, indent=4, sort_keys=True)
-
-    print "Wrote: {}".format(output_path)
-
-
 def _html_tidy_cell_item(item, key):
     """
     Returns HTML-tidied item for putting in table cell.
@@ -353,12 +332,10 @@ def run(project):
     for check_defn_file in check_defn_files:
         plugin_interface, checks = parse_checks_definitions(check_defn_file)
         plugin_id = plugin_interface['ccPluginId']
+
         plugin_interfaces[plugin_id] = plugin_interface
-
         checks_dict[plugin_id] = checks
-
         content = {"checks": checks}
-        write_to_json(project, plugin_id, content)
 
     # Write the specification doc
     write_specification(project, plugin_interfaces, checks_dict)

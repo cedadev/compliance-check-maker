@@ -1,0 +1,9 @@
+---
+# Project metadata
+- canonicalName:    example
+  label:            EXAMPLE
+  description:      Example Project
+  vocab_authority: 
+  vocab_scope: 
+  url: 
+  checks_version:   0.1.0

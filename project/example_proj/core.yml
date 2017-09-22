@@ -1,0 +1,44 @@
+---
+# Plugin interface details
+- ccPluginClass:    ExampleGlobalAttrsCheck
+  description:      Check core global attributes in Example Project files
+  ccPluginId:       example-global-attrs
+  ccPluginPackage:  cc_plugin_example.example_global_attrs
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_file_checks_register
+
+# Checks
+- check_id:       cr01
+  check_name:     ValidGlobalAttrsMatchFileNameCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'delimiter': '_', 'extension': '.nc', 'order': 'institution_id,realm,frequency'}
+  comments:
+
+- check_id:       cr02
+  check_name:     GlobalAttrRegexCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attribute': 'Conventions', 'regex': 'CF-1\.6'}
+  comments:
+
+- check_id:       cr03
+  check_name:     GlobalAttrRegexCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attribute': 'source', 'regex': '.{4,}'}
+  comments:       Should represent the original data source(s). E.g. 'HadGEM3-ES runs'.
+
+- check_id:       cr04
+  check_name:     GlobalAttrRegexCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attribute': 'creator_email', 'regex': '.+@.+\..+'}
+  comments:       E-mail address of creator
+
+- check_id:       cr05
+  check_name:     GlobalAttrVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
+  comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.

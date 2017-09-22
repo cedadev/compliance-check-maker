@@ -1,0 +1,16 @@
+---
+# Plugin interface details
+- ccPluginClass:    AMFCommonVariablesCheck
+  description:      Check common variables are present and correct in AMF files
+  ccPluginId:       amf-common-variables
+  ccPluginPackage:  cc_plugin_amf.amf_common_variables
+  ccPluginTemplate: BaseNCFileCheck
+  checklibPackage:  checklib.register.nc_file_checks_register
+  
+# Checks
+- check_id:       cva01
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas.amf
+  modifiers:      {'var_id': 'time', 'ncas.am.}
+  comments:       Checks the variable: time 

@@ -1,0 +1,9 @@
+---
+# Project metadata
+- canonicalName:    eustace
+  label:            EUSTACE
+  description:      EU Surface Temperature for All Corners of Earth
+  vocab_authority:  eustace-team
+  vocab_scope:      eustace
+  url:              https://www.eustaceproject.eu
+  checks_version:   0.1.0
