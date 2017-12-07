@@ -1,252 +1,252 @@
 ---
 # Plugin interface details
-- ccPluginClass:    AMFGlobalAttrsCheck
-  description:      Check core global attributes in AMF files
-  ccPluginId:       amf-global-attrs
-  ccPluginPackage:  cc_plugin_amf.amf_global_attrs
+- ccPluginClass:    AMFGlobalAttrsCommonCheck
+  description:      Check common global attributes in AMF files
+  ccPluginId:       amf-global-attrs-common
+  ccPluginPackage:  cc_plugin_amf.amf_global_attrs_common
   ccPluginTemplate: BaseNCCheck
   checklibPackage:  checklib.register.nc_file_checks_register
 
 # Checks
-- check_id:       cr01
+- check_id:       gac01
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'Conventions', 'regex': 'CF-1\.6'}
   comments:
 
-- check_id:       cr02
+- check_id:       gac02
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'source', 'regex': '.{4,}'}
-  comments:       'source' attribute should represent the original data source(s).
+  comments:       The "source" attribute should represent the original data source(s).
 
-- check_id:       cr03
+- check_id:       gac03
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'instrument_manufacturer', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr04
+- check_id:       gac04
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'instrument_model', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr05
+- check_id:       gac05
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'serial_number', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr06
+- check_id:       gac06
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'operational_software', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr07
+- check_id:       gac07
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'operational_software_version', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr08
+- check_id:       gac08
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'creator_name', 'regex': '.{4,}'}
   comments:       Name of creator
 
-- check_id:       cr09
+- check_id:       gac09
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'creator_email', 'regex': '.+@.+\..+'}
   comments:       E-mail address of creator
 
-- check_id:       cr10
+- check_id:       gac10
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
-  vocabulary_ref: 
+  vocabulary_ref:
   modifiers:      {'attribute': 'creator_url', 'regex': 'https:\/\/amf\.ncas\.ac\.uk'}
   comments:       Must be 'https://amf.ncas.ac.uk'
 
-- check_id:       cr11
+- check_id:       gac11
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'institution', 'regex': 'NCAS, National Centre for Atmospheric Science'}
   comments:       Must be 'NCAS, National Centre for Atmospheric Science'
 
-- check_id:       cr12
+- check_id:       gac12
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'processing_software', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr13
+- check_id:       gac13
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'processing_software_version', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr14
+- check_id:       gac14
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'calibration_sensitivity', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr15
+- check_id:       gac15
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'calibration_certification_date', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr16
+- check_id:       gac16
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'calibration_certification_url', 'regex': 'http.+'}
   comments:
 
-- check_id:       cr17
+- check_id:       gac17
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'sampling_interval', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr18
+- check_id:       gac18
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'averaging_interval', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr19
+- check_id:       gac19
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'data_set_version', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr20
+- check_id:       gac20
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'data_product_level', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr21
+- check_id:       gac21
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'last_revised_date', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr22
+- check_id:       gac22
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'project', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr23
+- check_id:       gac23
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'project_principal_investigator', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr24
+- check_id:       gac24
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'project_principal_investigator_contact', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr25
+- check_id:       gac25
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'licence', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr26
+- check_id:       gac26
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'acknowledgement', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr27
+- check_id:       gac27
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'platform_type', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr28
+- check_id:       gac28
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'platform_name', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr29
+- check_id:       gac29
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'title', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr30
+- check_id:       gac30
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'feature_type', 'regex': '(timeSeriesPoint|timeSeriesProfile|trajectory)'}
   comments:
 
-- check_id:       cr31
+- check_id:       gac31
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'start_time', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
-  comments:       Format is YYYY-MM-DDThh:mm:ss
+  comments:       Format is 'YYYY-MM-DDThh:mm:ss'
 
-- check_id:       cr32
+- check_id:       gac32
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'end_time', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
-  comments:       Format is YYYY-MM-DDThh:mm:ss
+  comments:       Format is 'YYYY-MM-DDThh:mm:ss'
 
-- check_id:       cr33
+- check_id:       gac33
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'location_keywords', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr34
+- check_id:       gac34
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'history', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr35
+- check_id:       gac35
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:

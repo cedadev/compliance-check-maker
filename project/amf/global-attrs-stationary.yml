@@ -1,0 +1,23 @@
+---
+# Plugin interface details
+- ccPluginClass:    AMFGlobalAttrsStationaryCheck
+  description:      Check stationary platform global attributes in AMF files
+  ccPluginId:       amf-global-attrs-stationary
+  ccPluginPackage:  cc_plugin_amf.amf_global_attrs_stationary
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_file_checks_register
+
+# Checks
+- check_id:       gas01
+  check_name:     GlobalAttrRegexCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attribute': 'platform_location', 'regex': '.{4,}'}
+  comments:
+
+- check_id:       gas02
+  check_name:     GlobalAttrRegexCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attribute': 'platform_height', 'regex': '.{4,}'}
+  comments:

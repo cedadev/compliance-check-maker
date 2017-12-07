@@ -335,7 +335,7 @@ def run(project):
 
         plugin_interfaces[plugin_id] = plugin_interface
         checks_dict[plugin_id] = checks
-        content = {"checks": checks}
+ #       content = {"checks": checks}
 
     # Write the specification doc
     write_specification(project, plugin_interfaces, checks_dict)
