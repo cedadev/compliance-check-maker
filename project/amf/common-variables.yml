@@ -1,16 +1,121 @@
 ---
 # Plugin interface details
 - ccPluginClass:    AMFCommonVariablesCheck
-  description:      Check common variables are present and correct in AMF files
+  description:      Check common variables in AMF files
   ccPluginId:       amf-common-variables
   ccPluginPackage:  cc_plugin_amf.amf_common_variables
-  ccPluginTemplate: BaseNCFileCheck
+  ccPluginTemplate: BaseNCCheck
   checklibPackage:  checklib.register.nc_file_checks_register
   
 # Checks
-- check_id:       cva01
+- check_id:       varattrs01
   check_name:     NCVariableMetadataCheck
   check_level:    HIGH
-  vocabulary_ref: ncas.amf
-  modifiers:      {'var_id': 'time', 'ncas.am.}
-  comments:       Checks the variable: time 
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'time'}
+  comments:       Checks the variable attributes for 'time'
+
+- check_id:       varattrs02
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'day_of_year'}
+  comments:       Checks the variable attributes for 'day_of_year'
+
+- check_id:       varattrs03
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'year'}
+  comments:       Checks the variable attributes for 'year'
+
+- check_id:       varattrs04
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'month'}
+  comments:       Checks the variable attributes for 'month'
+
+- check_id:       varattrs05
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'day'}
+  comments:       Checks the variable attributes for 'day'
+
+- check_id:       varattrs06
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'hour'}
+  comments:       Checks the variable attributes for 'hour'
+
+- check_id:       varattrs07
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'minute'}
+  comments:       Checks the variable attributes for 'minute'
+
+- check_id:       varattrs08
+  check_name:     NCVariableMetadataCheck
+  check_level:    HIGH
+  vocabulary_ref: ncas:amf
+  modifiers:      {'var_id': 'second'}
+  comments:       Checks the variable attributes for 'second'
+
+- check_id:       vartype01
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'time', 'dtype': 'float64'}
+  comments:       Checks the data type of variable 'time'
+
+- check_id:       vartype02
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'day_of_year', 'dtype': 'float64'}
+  comments:       Checks the data type of variable 'day_of_year'
+
+- check_id:       vartype03
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'year', 'dtype': 'int32'}
+  comments:       Checks the data type of variable 'year'
+
+- check_id:       vartype04
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'month', 'dtype': 'int32'}
+  comments:       Checks the data type of variable 'month'
+
+- check_id:       vartype05
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'day', 'dtype': 'int32'}
+  comments:       Checks the data type of variable 'day'
+
+- check_id:       vartype06
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'hour', 'dtype': 'int32'}
+  comments:       Checks the data type of variable 'hour'
+
+- check_id:       vartype07
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'minute', 'dtype': 'int32'}
+  comments:       Checks the data type of variable 'minute'
+
+- check_id:       vartype08
+  check_name:     VariableTypeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'var_id': 'second', 'dtype': 'float64'}
+  comments:       Checks the data type of variable 'second'
