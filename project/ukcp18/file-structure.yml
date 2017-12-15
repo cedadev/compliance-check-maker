@@ -14,3 +14,10 @@
   vocabulary_ref:
   modifiers:     
   comments:     
+
+- check_id:       fs02
+  check_name:     NetCDFFormatCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'format': 'NETCDF4_CLASSIC'}
+  comments:
