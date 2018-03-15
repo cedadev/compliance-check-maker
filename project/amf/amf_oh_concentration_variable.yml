@@ -1,0 +1,59 @@
+- {ccPluginClass: AMFOhConcentrationVariableCheck, ccPluginId: amf-oh_concentration_variable,
+  ccPluginPackage: cc_plugin_amf.amf_oh_concentration_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check oh
+    concentration variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'number_concentration_of_hydroperoxyl_radical_in_air'
+  modifiers: {pyessv_namespace: oh_concentration_variable, var_id: number_concentration_of_hydroperoxyl_radical_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: number_concentration_of_hydroperoxyl_radical_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'hydroxyl_radical_reactivity_in_air'
+  modifiers: {pyessv_namespace: oh_concentration_variable, var_id: hydroxyl_radical_reactivity_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: hydroxyl_radical_reactivity_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'sum_of _hydroxyl_and_hydroperoxyl_radical_concentration_in_air'
+  modifiers: {pyessv_namespace: oh_concentration_variable, var_id: sum_of _hydroxyl_and_hydroperoxyl_radical_concentration_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: sum_of _hydroxyl_and_hydroperoxyl_radical_concentration_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'number_concentration_of_hydroxyl_radical_in_air'
+  modifiers: {pyessv_namespace: oh_concentration_variable, var_id: number_concentration_of_hydroxyl_radical_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: number_concentration_of_hydroxyl_radical_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag'
+  modifiers: {pyessv_namespace: oh_concentration_variable, var_id: qc_flag}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag}
+  vocabulary_ref: ''

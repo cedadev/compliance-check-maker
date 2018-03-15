@@ -1,0 +1,37 @@
+- {ccPluginClass: AMFO3ConccentrationProfileVariableCheck, ccPluginId: amf-o3_conccentration_profile_variable,
+  ccPluginPackage: cc_plugin_amf.amf_o3_conccentration_profile_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check o3
+    conccentration profile variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_o3'
+  modifiers: {pyessv_namespace: o3_conccentration_profile_variable, var_id: qc_flag_o3}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_o3}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'altitude'
+  modifiers: {pyessv_namespace: o3_conccentration_profile_variable, var_id: altitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: altitude}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'mole_fraction_of_ozone_in_air'
+  modifiers: {pyessv_namespace: o3_conccentration_profile_variable, var_id: mole_fraction_of_ozone_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: mole_fraction_of_ozone_in_air}
+  vocabulary_ref: ''

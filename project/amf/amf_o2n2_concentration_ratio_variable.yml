@@ -1,0 +1,26 @@
+- {ccPluginClass: AMFO2n2ConcentrationRatioVariableCheck, ccPluginId: amf-o2n2_concentration_ratio_variable,
+  ccPluginPackage: cc_plugin_amf.amf_o2n2_concentration_ratio_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check o2n2
+    concentration ratio variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag'
+  modifiers: {pyessv_namespace: o2n2_concentration_ratio_variable, var_id: qc_flag}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'molecular_oxygen_molecular_nitrogen_ratio_in_air'
+  modifiers: {pyessv_namespace: o2n2_concentration_ratio_variable, var_id: molecular_oxygen_molecular_nitrogen_ratio_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: molecular_oxygen_molecular_nitrogen_ratio_in_air}
+  vocabulary_ref: ''

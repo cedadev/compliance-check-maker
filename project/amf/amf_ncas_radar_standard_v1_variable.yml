@@ -1,0 +1,257 @@
+- {ccPluginClass: AMFNcasRadarStandardV1VariableCheck, ccPluginId: amf-ncas_radar_standard_v1_variable,
+  ccPluginPackage: cc_plugin_amf.amf_ncas_radar_standard_v1_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check ncas
+    radar standard v1 variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'radar_antenna_gain_v'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: radar_antenna_gain_v}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: radar_antenna_gain_v}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'radar_antenna_gain_h'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: radar_antenna_gain_h}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: radar_antenna_gain_h}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'grid_mapping'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: grid_mapping}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int, var_id: grid_mapping}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'follow_mode'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: follow_mode}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: follow_mode}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'altitude'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: altitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: double, var_id: altitude}
+  vocabulary_ref: ''
+- check_id: varattrs6
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'radar_rx_bandwidth'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: radar_rx_bandwidth}
+  vocabulary_ref: ncas:amf
+- check_id: vartype6
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: radar_rx_bandwidth}
+  vocabulary_ref: ''
+- check_id: varattrs7
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'status_xml'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: status_xml}
+  vocabulary_ref: ncas:amf
+- check_id: vartype7
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: status_xml}
+  vocabulary_ref: ''
+- check_id: varattrs8
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'latitude'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: latitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype8
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: double, var_id: latitude}
+  vocabulary_ref: ''
+- check_id: varattrs9
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'radar_beam_width_v'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: radar_beam_width_v}
+  vocabulary_ref: ncas:amf
+- check_id: vartype9
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: radar_beam_width_v}
+  vocabulary_ref: ''
+- check_id: varattrs10
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'sweep_mode'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: sweep_mode}
+  vocabulary_ref: ncas:amf
+- check_id: vartype10
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: sweep_mode}
+  vocabulary_ref: ''
+- check_id: varattrs11
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'prt_mode'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: prt_mode}
+  vocabulary_ref: ncas:amf
+- check_id: vartype11
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: prt_mode}
+  vocabulary_ref: ''
+- check_id: varattrs12
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'altitude_agl'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: altitude_agl}
+  vocabulary_ref: ncas:amf
+- check_id: vartype12
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: double, var_id: altitude_agl}
+  vocabulary_ref: ''
+- check_id: varattrs13
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'sweep_number'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: sweep_number}
+  vocabulary_ref: ncas:amf
+- check_id: vartype13
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int, var_id: sweep_number}
+  vocabulary_ref: ''
+- check_id: varattrs14
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'time_coverage_start'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: time_coverage_start}
+  vocabulary_ref: ncas:amf
+- check_id: vartype14
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: time_coverage_start}
+  vocabulary_ref: ''
+- check_id: varattrs15
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'radar_beam_width_h'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: radar_beam_width_h}
+  vocabulary_ref: ncas:amf
+- check_id: vartype15
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: radar_beam_width_h}
+  vocabulary_ref: ''
+- check_id: varattrs16
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'polarization_mode'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: polarization_mode}
+  vocabulary_ref: ncas:amf
+- check_id: vartype16
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: polarization_mode}
+  vocabulary_ref: ''
+- check_id: varattrs17
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'primary_axis'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: primary_axis}
+  vocabulary_ref: ncas:amf
+- check_id: vartype17
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: primary_axis}
+  vocabulary_ref: ''
+- check_id: varattrs18
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'time_coverage_end'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: time_coverage_end}
+  vocabulary_ref: ncas:amf
+- check_id: vartype18
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: time_coverage_end}
+  vocabulary_ref: ''
+- check_id: varattrs19
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'fixed_angle'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: fixed_angle}
+  vocabulary_ref: ncas:amf
+- check_id: vartype19
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: fixed_angle}
+  vocabulary_ref: ''
+- check_id: varattrs20
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'longitude'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: longitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype20
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: double, var_id: longitude}
+  vocabulary_ref: ''
+- check_id: varattrs21
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'volume_number'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: volume_number}
+  vocabulary_ref: ncas:amf
+- check_id: vartype21
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int, var_id: volume_number}
+  vocabulary_ref: ''
+- check_id: varattrs22
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_type'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: platform_type}
+  vocabulary_ref: ncas:amf
+- check_id: vartype22
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: char, var_id: platform_type}
+  vocabulary_ref: ''
+- check_id: varattrs23
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'frequency'
+  modifiers: {pyessv_namespace: ncas_radar_standard_v1_variable, var_id: frequency}
+  vocabulary_ref: ncas:amf
+- check_id: vartype23
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float, var_id: frequency}
+  vocabulary_ref: ''

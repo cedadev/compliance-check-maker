@@ -1,0 +1,69 @@
+- {ccPluginClass: AMFSoilVariableCheck, ccPluginId: amf-soil_variable, ccPluginPackage: cc_plugin_amf.amf_soil_variable,
+  ccPluginTemplate: BaseNCCheck, checklibPackage: checklib.register.nc_file_checks_register,
+  description: Check soil variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'soil_water_potential'
+  modifiers: {pyessv_namespace: soil_variable, var_id: soil_water_potential}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: soil_water_potential}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_soil_water_potential'
+  modifiers: {pyessv_namespace: soil_variable, var_id: qc_flag_soil_water_potential}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_soil_water_potential}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'downward_heat_flux_in_soil'
+  modifiers: {pyessv_namespace: soil_variable, var_id: downward_heat_flux_in_soil}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: downward_heat_flux_in_soil}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_soil_heat_flux'
+  modifiers: {pyessv_namespace: soil_variable, var_id: qc_flag_soil_heat_flux}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_soil_heat_flux}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'soil_temperature'
+  modifiers: {pyessv_namespace: soil_variable, var_id: soil_temperature}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: soil_temperature}
+  vocabulary_ref: ''
+- check_id: varattrs6
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_soil_temperature'
+  modifiers: {pyessv_namespace: soil_variable, var_id: qc_flag_soil_temperature}
+  vocabulary_ref: ncas:amf
+- check_id: vartype6
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_soil_temperature}
+  vocabulary_ref: ''

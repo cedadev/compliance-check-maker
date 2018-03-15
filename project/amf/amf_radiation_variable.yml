@@ -1,0 +1,113 @@
+- {ccPluginClass: AMFRadiationVariableCheck, ccPluginId: amf-radiation_variable, ccPluginPackage: cc_plugin_amf.amf_radiation_variable,
+  ccPluginTemplate: BaseNCCheck, checklibPackage: checklib.register.nc_file_checks_register,
+  description: Check radiation variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_upwelling_longwave'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: qc_flag_upwelling_longwave}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_upwelling_longwave}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'downwelling_shortwave_flux_in_air'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: downwelling_shortwave_flux_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: downwelling_shortwave_flux_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'upwelling_longwave_flux_in_air'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: upwelling_longwave_flux_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: upwelling_longwave_flux_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_body_temperature'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: qc_flag_body_temperature}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_body_temperature}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_cleaning'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: qc_flag_cleaning}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_cleaning}
+  vocabulary_ref: ''
+- check_id: varattrs6
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'upwelling_shortwave_flux_in_air'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: upwelling_shortwave_flux_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype6
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: upwelling_shortwave_flux_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs7
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_upwelling_shortwave'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: qc_flag_upwelling_shortwave}
+  vocabulary_ref: ncas:amf
+- check_id: vartype7
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_upwelling_shortwave}
+  vocabulary_ref: ''
+- check_id: varattrs8
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'downwelling_longwave_flux_in_air'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: downwelling_longwave_flux_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype8
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: downwelling_longwave_flux_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs9
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_downwelling_shortwave'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: qc_flag_downwelling_shortwave}
+  vocabulary_ref: ncas:amf
+- check_id: vartype9
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_downwelling_shortwave}
+  vocabulary_ref: ''
+- check_id: varattrs10
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_downwelling_longwave'
+  modifiers: {pyessv_namespace: radiation_variable, var_id: qc_flag_downwelling_longwave}
+  vocabulary_ref: ncas:amf
+- check_id: vartype10
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_downwelling_longwave}
+  vocabulary_ref: ''

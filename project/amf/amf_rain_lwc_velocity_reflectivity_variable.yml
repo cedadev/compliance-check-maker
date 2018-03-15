@@ -1,0 +1,92 @@
+- {ccPluginClass: AMFRainLwcVelocityReflectivityVariableCheck, ccPluginId: amf-rain_lwc_velocity_reflectivity_variable,
+  ccPluginPackage: cc_plugin_amf.amf_rain_lwc_velocity_reflectivity_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check rain
+    lwc velocity reflectivity variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'attenuated_radar_reflectivity'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: attenuated_radar_reflectivity}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: attenuated_radar_reflectivity}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'radar_reflectivity'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: radar_reflectivity}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: radar_reflectivity}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'path_integrated_attenuation'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: path_integrated_attenuation}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: path_integrated_attenuation}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'altitude'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: altitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: altitude}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'rainfall_rate'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: rainfall_rate}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: rainfall_rate}
+  vocabulary_ref: ''
+- check_id: varattrs6
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: qc_flag}
+  vocabulary_ref: ncas:amf
+- check_id: vartype6
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag}
+  vocabulary_ref: ''
+- check_id: varattrs7
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'rainfall_velocity'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: rainfall_velocity}
+  vocabulary_ref: ncas:amf
+- check_id: vartype7
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: rainfall_velocity}
+  vocabulary_ref: ''
+- check_id: varattrs8
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'rain_liquid_water_content'
+  modifiers: {pyessv_namespace: rain_lwc_velocity_reflectivity_variable, var_id: rain_liquid_water_content}
+  vocabulary_ref: ncas:amf
+- check_id: vartype8
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: rain_liquid_water_content}
+  vocabulary_ref: ''

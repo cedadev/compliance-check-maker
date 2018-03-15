@@ -1,0 +1,169 @@
+- {ccPluginClass: AMFSurfaceMetVariableCheck, ccPluginId: amf-surface_met_variable,
+  ccPluginPackage: cc_plugin_amf.amf_surface_met_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check surface
+    met variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'wind_speed'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: wind_speed}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: wind_speed}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_precipitation'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: qc_flag_precipitation}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_precipitation}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_radiation'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: qc_flag_radiation}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_radiation}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'rainfall_rate'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: rainfall_rate}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: rainfall_rate}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'downwelling_shortwave_flux_in_air'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: downwelling_shortwave_flux_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: downwelling_shortwave_flux_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs6
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_pressure'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: qc_flag_pressure}
+  vocabulary_ref: ncas:amf
+- check_id: vartype6
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_pressure}
+  vocabulary_ref: ''
+- check_id: varattrs7
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'air_pressure'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: air_pressure}
+  vocabulary_ref: ncas:amf
+- check_id: vartype7
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: air_pressure}
+  vocabulary_ref: ''
+- check_id: varattrs8
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'thickness_of_rainfall_amount'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: thickness_of_rainfall_amount}
+  vocabulary_ref: ncas:amf
+- check_id: vartype8
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: thickness_of_rainfall_amount}
+  vocabulary_ref: ''
+- check_id: varattrs9
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'relative_humidity'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: relative_humidity}
+  vocabulary_ref: ncas:amf
+- check_id: vartype9
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: relative_humidity}
+  vocabulary_ref: ''
+- check_id: varattrs10
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'air_temperature'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: air_temperature}
+  vocabulary_ref: ncas:amf
+- check_id: vartype10
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: air_temperature}
+  vocabulary_ref: ''
+- check_id: varattrs11
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_wind'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: qc_flag_wind}
+  vocabulary_ref: ncas:amf
+- check_id: vartype11
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_wind}
+  vocabulary_ref: ''
+- check_id: varattrs12
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'wind_from_direction'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: wind_from_direction}
+  vocabulary_ref: ncas:amf
+- check_id: vartype12
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: wind_from_direction}
+  vocabulary_ref: ''
+- check_id: varattrs13
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_relative_humidity'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: qc_flag_relative_humidity}
+  vocabulary_ref: ncas:amf
+- check_id: vartype13
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_relative_humidity}
+  vocabulary_ref: ''
+- check_id: varattrs14
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'downwelling_longwave_flux_in_air'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: downwelling_longwave_flux_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype14
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: downwelling_longwave_flux_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs15
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag_temperature'
+  modifiers: {pyessv_namespace: surface_met_variable, var_id: qc_flag_temperature}
+  vocabulary_ref: ncas:amf
+- check_id: vartype15
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag_temperature}
+  vocabulary_ref: ''

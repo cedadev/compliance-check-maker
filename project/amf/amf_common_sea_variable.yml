@@ -1,0 +1,191 @@
+- {ccPluginClass: AMFCommonSeaVariableCheck, ccPluginId: amf-common_sea_variable,
+  ccPluginPackage: cc_plugin_amf.amf_common_sea_variable, ccPluginTemplate: BaseNCCheck,
+  checklibPackage: checklib.register.nc_file_checks_register, description: Check common
+    sea variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_roll_angle'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_roll_angle}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_roll_angle}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'hour'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: hour}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int32, var_id: hour}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_orientation'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_orientation}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_orientation}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'year'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: year}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int32, var_id: year}
+  vocabulary_ref: ''
+- check_id: varattrs5
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_yaw_angle'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_yaw_angle}
+  vocabulary_ref: ncas:amf
+- check_id: vartype5
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_yaw_angle}
+  vocabulary_ref: ''
+- check_id: varattrs6
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_course'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_course}
+  vocabulary_ref: ncas:amf
+- check_id: vartype6
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_course}
+  vocabulary_ref: ''
+- check_id: varattrs7
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'day_of_year'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: day_of_year}
+  vocabulary_ref: ncas:amf
+- check_id: vartype7
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: day_of_year}
+  vocabulary_ref: ''
+- check_id: varattrs8
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'longitude'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: longitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype8
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: longitude}
+  vocabulary_ref: ''
+- check_id: varattrs9
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_yaw_rate'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_yaw_rate}
+  vocabulary_ref: ncas:amf
+- check_id: vartype9
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_yaw_rate}
+  vocabulary_ref: ''
+- check_id: varattrs10
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_pitch_angle'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_pitch_angle}
+  vocabulary_ref: ncas:amf
+- check_id: vartype10
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_pitch_angle}
+  vocabulary_ref: ''
+- check_id: varattrs11
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_roll_rate'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_roll_rate}
+  vocabulary_ref: ncas:amf
+- check_id: vartype11
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_roll_rate}
+  vocabulary_ref: ''
+- check_id: varattrs12
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_speed_wrt_sea_water'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_speed_wrt_sea_water}
+  vocabulary_ref: ncas:amf
+- check_id: vartype12
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_speed_wrt_sea_water}
+  vocabulary_ref: ''
+- check_id: varattrs13
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'time'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: time}
+  vocabulary_ref: ncas:amf
+- check_id: vartype13
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: time}
+  vocabulary_ref: ''
+- check_id: varattrs14
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'latitude'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: latitude}
+  vocabulary_ref: ncas:amf
+- check_id: vartype14
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: latitude}
+  vocabulary_ref: ''
+- check_id: varattrs15
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'month'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: month}
+  vocabulary_ref: ncas:amf
+- check_id: vartype15
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int32, var_id: month}
+  vocabulary_ref: ''
+- check_id: varattrs16
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'platform_pitch_rate'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: platform_pitch_rate}
+  vocabulary_ref: ncas:amf
+- check_id: vartype16
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: platform_pitch_rate}
+  vocabulary_ref: ''
+- check_id: varattrs17
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'day'
+  modifiers: {pyessv_namespace: common_sea_variable, var_id: day}
+  vocabulary_ref: ncas:amf
+- check_id: vartype17
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: int32, var_id: day}
+  vocabulary_ref: ''

@@ -1,0 +1,47 @@
+- {ccPluginClass: AMFDewPointVariableCheck, ccPluginId: amf-dew_point_variable, ccPluginPackage: cc_plugin_amf.amf_dew_point_variable,
+  ccPluginTemplate: BaseNCCheck, checklibPackage: checklib.register.nc_file_checks_register,
+  description: Check dew point variable in AMF files}
+- check_id: varattrs1
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'dew_point_temperature'
+  modifiers: {pyessv_namespace: dew_point_variable, var_id: dew_point_temperature}
+  vocabulary_ref: ncas:amf
+- check_id: vartype1
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: dew_point_temperature}
+  vocabulary_ref: ''
+- check_id: varattrs2
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'qc_flag'
+  modifiers: {pyessv_namespace: dew_point_variable, var_id: qc_flag}
+  vocabulary_ref: ncas:amf
+- check_id: vartype2
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: byte, var_id: qc_flag}
+  vocabulary_ref: ''
+- check_id: varattrs3
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'mole_fraction_of_water_vapor_in_air'
+  modifiers: {pyessv_namespace: dew_point_variable, var_id: mole_fraction_of_water_vapor_in_air}
+  vocabulary_ref: ncas:amf
+- check_id: vartype3
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: mole_fraction_of_water_vapor_in_air}
+  vocabulary_ref: ''
+- check_id: varattrs4
+  check_level: HIGH
+  check_name: NCVariableMetadataCheck
+  comments: Checks the variable attributes for 'relative_humidity'
+  modifiers: {pyessv_namespace: dew_point_variable, var_id: relative_humidity}
+  vocabulary_ref: ncas:amf
+- check_id: vartype4
+  check_level: HIGH
+  check_name: VariableTypeCheck
+  modifiers: {dtype: float64, var_id: relative_humidity}
+  vocabulary_ref: ''
