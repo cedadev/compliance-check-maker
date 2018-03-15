@@ -84,12 +84,14 @@ def _parse_kwargs_string(s):
     return d
 
 
-def _build_check_specifier(dct):
+def _build_check_specifier(dct, check_prefix, check_number):
     """
     Parse dictionary `dct` defining check and combines it with information from
     the checklib registers to create and return detailed dictionary.
 
     :param dct: dictionary of input details for check
+    :param check_prefix: prefix string to start each check with
+    :param check_number: number for this check (integer)
     :return: dictionary defining details of a check.
     """
     # Clone the dictionary using empty strings for None values
@@ -111,6 +113,9 @@ def _build_check_specifier(dct):
     d["python_interface"] = "{}.{}".format(cls.__module__, cls.__name__)
     d["check_unittest"] = ""
 
+    # Define check Id
+    d["check_id"] = "{}_{:03d}".format(check_prefix, check_number)
+
     return d
 
 
@@ -129,12 +134,13 @@ def parse_checks_definitions(check_defn_file):
 
     # Check plugin interface is always first dictionary
     plugin_interface = content[0]
- 
+    check_prefix = plugin_interface['checkIdPrefix']
+
     checks = []
 
     # Populate a list of checks from remaining dictionaries
-    for check_dict in content[1:]:
-        d = _build_check_specifier(check_dict)
+    for n, check_dict in enumerate(content[1:]):
+        d = _build_check_specifier(check_dict, check_prefix, n + 1)
         d["plugin_id"] = plugin_interface
         checks.append(d)
 
@@ -335,7 +341,6 @@ def run(project):
 
         plugin_interfaces[plugin_id] = plugin_interface
         checks_dict[plugin_id] = checks
- #       content = {"checks": checks}
 
     # Write the specification doc
     write_specification(project, plugin_interfaces, checks_dict)

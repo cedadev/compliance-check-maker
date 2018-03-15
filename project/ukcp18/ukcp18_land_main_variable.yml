@@ -1,0 +1,22 @@
+---
+# Plugin interface details
+- ccPluginClass:    UKCP18LandMainVariableCheck
+  description:      Check structure of UKCP18 main variables
+  ccPluginId:       ukcp18-main-variable
+  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_file_structure
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_file_checks_register
+  checkIdPrefix:    lmvc
+
+# Checks
+- check_name:     OneMainVariablePerFileCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:     
+  comments:     
+
+- check_name:     MainVariableAttributeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attr_name': 'cell_methods', 'attr_value': 'time: mean'}
+  comments:

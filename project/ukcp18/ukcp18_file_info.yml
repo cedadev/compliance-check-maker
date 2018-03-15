@@ -6,7 +6,8 @@
   ccPluginPackage:  cc_plugin_ukcp18.ukcp18_file_info
   ccPluginTemplate: BaseFileCheck
   checklibPackage:  checklib.register.file_checks_register
-  
+  checkIdPrefix:    flic
+
 # Checks
 - check_id:       fi01
   check_name:     FileSizeCheck 

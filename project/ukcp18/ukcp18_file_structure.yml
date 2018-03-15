@@ -6,16 +6,10 @@
   ccPluginPackage:  cc_plugin_ukcp18.ukcp18_file_structure
   ccPluginTemplate: BaseNCCheck
   checklibPackage:  checklib.register.nc_file_checks_register
+  checkIdPrefix:    fstc
 
 # Checks
 - check_id:       fs01
-  check_name:     OneMainVariablePerFileCheck
-  check_level:    HIGH
-  vocabulary_ref:
-  modifiers:     
-  comments:     
-
-- check_id:       fs02
   check_name:     NetCDFFormatCheck
   check_level:    HIGH
   vocabulary_ref:
