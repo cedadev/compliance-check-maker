@@ -33,7 +33,7 @@
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref: 
-  modifiers:      {'attribute': 'project_id', 'regex': 'UKCP18'}
+  modifiers:      {'attribute': 'project', 'regex': 'UKCP18'}
   comments:       Must be 'UKCP18'
 
 - check_id:       cr05
@@ -44,11 +44,11 @@
   comments:
 
 - check_id:       cr06
-  check_name:     GlobalAttrRegexCheck
-  check_level:    MEDIUM
-  vocabulary_ref:
-  modifiers:      {'attribute': 'history', 'regex': '.{4,}'}
-  comments:
+  check_name:     GlobalAttrVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'attribute': 'dataset_id', 'vocab_lookup': 'canonical_name'}
+  comments:       The 'dataset_id' global attribute must exist and have a value present in the relevant vocabulary.
 
 - check_id:       cr07
   check_name:     GlobalAttrRegexCheck
@@ -61,7 +61,7 @@
   check_name:     GlobalAttrRegexCheck 
   check_level:    HIGH
   vocabulary_ref:
-  modifiers:      {'attribute': 'product_version', 'regex': '.{4,}'}
+  modifiers:      {'attribute': 'version', 'regex': 'v{8}'}
   comments:
 
 - check_id:       cr09
@@ -73,23 +73,23 @@
 
 - check_id:       cr10
   check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
+  check_level:    MEDIUM
   vocabulary_ref:
-  modifiers:      {'attribute': 'summary', 'regex': '.{20,}'}
-  comments:       Should be a paragraph describing the data.
+  modifiers:      {'attribute': 'creation_date', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
+  comments:       Format is YYYY-MM-DDThh:mm:ss
 
 - check_id:       cr11
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
-  modifiers:      {'attribute': 'creator_name', 'regex': '.{4,}'}
+  modifiers:      {'attribute': 'creator_name', 'regex': 'The UKCP Team'}
   comments:       Name of creator
 
 - check_id:       cr12
   check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
-  modifiers:      {'attribute': 'creator_email', 'regex': '.+@.+\..+'}
+  modifiers:      {'attribute': 'creator_email', 'regex': 'ukcpproject@metoffice.gov.uk'}
   comments:       E-mail address of creator
 
 - check_id:       cr13
@@ -109,14 +109,8 @@
 - check_id:       cr15
   check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
-  vocabulary_ref: ukcp:ukcp18
+  vocabulary_ref: ukcp:ukcp18/
   modifiers:      {'attribute': 'institution', 'vocab_lookup': 'description'}
   comments:       The 'institution' global attribute must exist and have a value present in the relevant vocabulary.
 
-- check_id:       cr16
-  check_name:     GlobalAttrRegexCheck
-  check_level:    MEDIUM
-  vocabulary_ref: 
-  modifiers:      {'attribute': 'creation_date', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
-  comments:       Format is YYYY-MM-DDThh:mm:ss
 
