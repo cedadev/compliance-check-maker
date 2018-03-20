@@ -9,8 +9,7 @@
   checkIdPrefix:    fstc
 
 # Checks
-- check_id:       fs01
-  check_name:     NetCDFFormatCheck
+- check_name:     NetCDFFormatCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'format': 'NETCDF4_CLASSIC'}

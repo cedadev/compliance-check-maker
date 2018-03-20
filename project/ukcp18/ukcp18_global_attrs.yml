@@ -9,106 +9,91 @@
   checkIdPrefix:    gatc
 
 # Checks
-- check_id:       cr01
-  check_name:     ValidGlobalAttrsMatchFileNameCheck
+- check_name:     ValidGlobalAttrsMatchFileNameCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18 
   modifiers:      {'delimiter': '_', 'extension': '.nc', 'order': 'institution_id,realm,frequency'}
   comments:
 
-- check_id:       cr02
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'Conventions', 'regex': 'CF-1\.6'}
   comments:
 
-- check_id:       cr03
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'source', 'regex': '.{4,}'}
   comments:       Should represent the original data source(s). E.g. 'HadGEM3-ES runs'.
 
-- check_id:       cr04
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref: 
   modifiers:      {'attribute': 'project', 'regex': 'UKCP18'}
   comments:       Must be 'UKCP18'
 
-- check_id:       cr05
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'contact', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr06
-  check_name:     GlobalAttrVocabCheck
+- check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'attribute': 'dataset_id', 'vocab_lookup': 'canonical_name'}
   comments:       The 'dataset_id' global attribute must exist and have a value present in the relevant vocabulary.
 
-- check_id:       cr07
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    MEDIUM
   vocabulary_ref:
   modifiers:      {'attribute': 'references', 'regex': '.{4,}'}
   comments:
 
-- check_id:       cr08
-  check_name:     GlobalAttrRegexCheck 
+- check_name:     GlobalAttrRegexCheck 
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'version', 'regex': 'v{8}'}
   comments:
 
-- check_id:       cr09
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'title', 'regex': '.{4,}'}
   comments:       Should be a succinct description of the data.
 
-- check_id:       cr10
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    MEDIUM
   vocabulary_ref:
   modifiers:      {'attribute': 'creation_date', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
   comments:       Format is YYYY-MM-DDThh:mm:ss
 
-- check_id:       cr11
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'creator_name', 'regex': 'The UKCP Team'}
   comments:       Name of creator
 
-- check_id:       cr12
-  check_name:     GlobalAttrRegexCheck
+- check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'attribute': 'creator_email', 'regex': 'ukcpproject@metoffice.gov.uk'}
   comments:       E-mail address of creator
 
-- check_id:       cr13
-  check_name:     GlobalAttrVocabCheck
+- check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
   comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
 
-- check_id:       cr14
-  check_name:     GlobalAttrVocabCheck
+- check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'attribute': 'institution_id', 'vocab_lookup': 'canonical_name'}
   comments:       The 'institution_id' global attribute must exist and have a value present in the relevant vocabulary.
 
-- check_id:       cr15
-  check_name:     GlobalAttrVocabCheck
+- check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18/
   modifiers:      {'attribute': 'institution', 'vocab_lookup': 'description'}

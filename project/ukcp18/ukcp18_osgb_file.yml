@@ -1,0 +1,28 @@
+---
+# Plugin interface details
+- ccPluginClass:    UKCP18OSGBFileCheck
+  description:      Check content of UKCP18 OSGB files
+  ccPluginId:       ukcp18-osgb-file
+  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_osgb_file
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_coords_checks_registry
+  checkIdPrefix:    osgbf
+
+# Checks
+- check_name:     NCCoordVarHasBoundsCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:     {'var_id': 'projection_x_coordinate'}
+  comments:     
+
+- check_name:     NCCoordVarHasBoundsCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:     {'var_id': 'projection_y_coordinate'}
+  comments:
+
+- check_name:     NCCoordVarHasBoundsCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:     {'var_id': 'time'}
+  comments:

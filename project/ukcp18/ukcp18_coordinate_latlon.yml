@@ -9,29 +9,25 @@
   checkIdPrefix:    cllc
 
 # Checks
-- check_id:       coord01
-  check_name:     VariableExistsInFileCheck
+- check_name:     VariableExistsInFileCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'var_id': 'longitude'}
   comments:       Checks that longitude is named correctly.
 
-- check_id:       coord02
-  check_name:     VariableRangeCheck
+- check_name:     VariableRangeCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'var_id': 'longitude', 'minimum': -180., 'maximum': '180.'}
   comments:       Checks that longitude is in required range. 
 
-- check_id:       coord03
-  check_name:     VariableExistsInFileCheck
+- check_name:     VariableExistsInFileCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'var_id': 'latitude'}
   comments:       Checks that latitude is named correctly.
 
-- check_id:       coord04
-  check_name:     VariableRangeCheck
+- check_name:     VariableRangeCheck
   check_level:    HIGH
   vocabulary_ref:
   modifiers:      {'var_id': 'latitude', 'minimum': -90., 'maximum': '90.'}
