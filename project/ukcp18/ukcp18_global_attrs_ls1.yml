@@ -13,7 +13,7 @@
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'delimiter': '_', 'extension': '.nc',
-                   'order': 'variable,scenario,collection,domain,resolution,coordinate,frequency,regex:',
+                   'order': 'variable~scenario~collection~domain~resolution~coordinate~frequency~regex:',
                    'ignore_attr_checks': ['variable']}
 
 - check_name:     GlobalAttrRegexCheck
