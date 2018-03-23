@@ -318,6 +318,30 @@ def write_cc_plugin_modules(project, plugin_interfaces, checks_dict):
         print "Wrote: {}".format(output_path)
 
 
+def display_plugin_entry_points(project, plugin_interfaces, checks_dict):
+    """
+    Display plugin entry points (for `setup.py` file).
+
+    :param plugin_interfaces: plugin interfaces dicts
+    """
+    keys = plugin_interfaces.keys()
+    
+    for key in sorted(keys):
+        pi_dict = plugin_interfaces[key]
+        s = "            '{} = {}:{}',".format(key, pi_dict['ccPluginPackage'], 
+                                               pi_dict['ccPluginClass'])
+        print(s)
+
+"""
+ ppp.items()[0]
+('ukcp18-coords', {'checklibPackage': 'checklib.register.nc_file_checks_register', 'ccPluginPackage': 'cc_plugin_ukcp18.ukcp18_coords', 'description': 'Check lat, lon coordinate information in UKCP18 files', 'ccPluginClass': 'UKCP18CoordinatesLatLonCheck', 'ccPluginId': 'ukcp18-coords', 'checkIdPrefix': 'cllc', 'ccPluginTemplate': 'BaseNCCheck'})
+
+            'ukcp18-file-info = cc_plugin_ukcp18.ukcp18_file_info:UKCP18FileInfoCheck',
+            'ukcp18-file-structure = cc_plugin_ukcp18.ukcp18_file_structure:UKCP18FileStructureCheck',
+            'ukcp18-global-attrs = cc_plugin_ukcp18.ukcp18_global_attrs:UKCP18GlobalAttrsCheck',
+            'ukcp18-coords = cc_plugin_ukcp18.ukcp18_coords:UKCP18CoordinatesCheck'
+"""
+
 def run(project):
     """
     Write JSON rules files, specification document and code stubs.
@@ -347,6 +371,9 @@ def run(project):
 
     # Write python plugin classes for each plugin
     write_cc_plugin_modules(project, plugin_interfaces, checks_dict)
+
+    # Display plugin entry points (for `setup.py` file)
+    display_plugin_entry_points(project, plugin_interfaces, checks_dict)
 
 
 def main():

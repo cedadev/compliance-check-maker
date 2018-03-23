@@ -20,3 +20,9 @@
   vocabulary_ref:
   modifiers:      {'attr_name': 'cell_methods', 'attr_value': 'time: mean'}
   comments:
+
+- check_name:     MainVariableAttributeCheck
+  check_level:    HIGH
+  vocabulary_ref:
+  modifiers:      {'attr_name': '_FillValue', 'attr_value': 1e20}
+  comments:

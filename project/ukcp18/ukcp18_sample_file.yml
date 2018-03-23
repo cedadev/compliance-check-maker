@@ -1,0 +1,16 @@
+---
+# Plugin interface details
+- ccPluginClass:    UKCP18SampleFileCheck
+  description:      Check content of UKCP18 sample files
+  ccPluginId:       ukcp18-sample-file
+  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_sample_file
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_coords_checks_register
+  checkIdPrefix:    sample
+
+# Checks
+- check_name:     NCCoordVarHasLengthInVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:     {'var_id': 'sample'}
+  comments:     

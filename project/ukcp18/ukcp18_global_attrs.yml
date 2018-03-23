@@ -9,16 +9,10 @@
   checkIdPrefix:    gatc
 
 # Checks
-- check_name:     ValidGlobalAttrsMatchFileNameCheck
-  check_level:    HIGH
-  vocabulary_ref: ukcp:ukcp18 
-  modifiers:      {'delimiter': '_', 'extension': '.nc', 'order': 'institution_id,realm,frequency'}
-  comments:
-
 - check_name:     GlobalAttrRegexCheck
   check_level:    HIGH
   vocabulary_ref:
-  modifiers:      {'attribute': 'Conventions', 'regex': 'CF-1\.6'}
+  modifiers:      {'attribute': 'Conventions', 'regex': 'CF-1\.5'}
   comments:
 
 - check_name:     GlobalAttrRegexCheck
@@ -39,12 +33,6 @@
   modifiers:      {'attribute': 'contact', 'regex': '.{4,}'}
   comments:
 
-- check_name:     GlobalAttrVocabCheck
-  check_level:    HIGH
-  vocabulary_ref: ukcp:ukcp18
-  modifiers:      {'attribute': 'dataset_id', 'vocab_lookup': 'canonical_name'}
-  comments:       The 'dataset_id' global attribute must exist and have a value present in the relevant vocabulary.
-
 - check_name:     GlobalAttrRegexCheck
   check_level:    MEDIUM
   vocabulary_ref:
@@ -54,7 +42,7 @@
 - check_name:     GlobalAttrRegexCheck 
   check_level:    HIGH
   vocabulary_ref:
-  modifiers:      {'attribute': 'version', 'regex': 'v{8}'}
+  modifiers:      {'attribute': 'version', 'regex': 'v\d{8}'}
   comments:
 
 - check_name:     GlobalAttrRegexCheck
@@ -69,34 +57,21 @@
   modifiers:      {'attribute': 'creation_date', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
   comments:       Format is YYYY-MM-DDThh:mm:ss
 
-- check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref:
-  modifiers:      {'attribute': 'creator_name', 'regex': 'The UKCP Team'}
-  comments:       Name of creator
-
-- check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref:
-  modifiers:      {'attribute': 'creator_email', 'regex': 'ukcpproject@metoffice.gov.uk'}
-  comments:       E-mail address of creator
-
 - check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
-  modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
-  comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
-
-- check_name:     GlobalAttrVocabCheck
-  check_level:    HIGH
-  vocabulary_ref: ukcp:ukcp18
-  modifiers:      {'attribute': 'institution_id', 'vocab_lookup': 'canonical_name'}
+  modifiers:      {'attribute': 'institution_id', 'vocab_lookup': 'label'}
   comments:       The 'institution_id' global attribute must exist and have a value present in the relevant vocabulary.
 
+- check_name:     GlobalAttrRegexCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'attribute': 'institution', 'regex': 'Met Office Hadley Centre \(MOHC\), FitzRoy Road, Exeter, Devon, EX1 3PB, UK\.'}
+  comments:       The 'institution' global attribute must match the expected value.
+
 - check_name:     GlobalAttrVocabCheck
   check_level:    HIGH
-  vocabulary_ref: ukcp:ukcp18/
-  modifiers:      {'attribute': 'institution', 'vocab_lookup': 'description'}
-  comments:       The 'institution' global attribute must exist and have a value present in the relevant vocabulary.
-
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'attribute': 'domain', 'vocab_lookup': 'canonical_name'}
+  comments:       The 'domain' global attribute must exist and have a value present in the relevant vocabulary.
 

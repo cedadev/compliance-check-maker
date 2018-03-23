@@ -1,0 +1,29 @@
+---
+# Plugin interface details
+- ccPluginClass:    UKCP18GlobalAttrsLS1Check
+  description:      Check core LS1 global attributes in UKCP18 files
+  ccPluginId:       ukcp18-global-attrs-ls1
+  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_global_attrs_ls1
+  ccPluginTemplate: BaseNCCheck
+  checklibPackage:  checklib.register.nc_file_checks_register
+  checkIdPrefix:    gatls1
+
+# Checks
+- check_name:     ValidGlobalAttrsMatchFileNameCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'delimiter': '_', 'extension': '.nc',
+                   'order': 'variable,scenario,collection,domain,resolution,coordinate,frequency,regex:',
+                   'ignore_attr_checks': ['variable']}
+
+- check_name:     GlobalAttrRegexCheck
+  check_level:    MEDIUM
+  modifiers:      {'attribute': 'collection', 'regex': 'land-prob'}
+
+- check_name:     GlobalAttrVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
+  comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
+
+
