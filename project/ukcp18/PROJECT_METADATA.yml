@@ -7,3 +7,4 @@
   vocab_scope:      ukcp18
   url: 
   checks_version:   0.9.0
+  plugin:           cc_plugin_ukcp18

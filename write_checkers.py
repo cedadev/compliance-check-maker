@@ -60,6 +60,7 @@ def get_check_defn_files(project):
     """
     yml_files = glob.glob(os.path.join(INPUTS_DIR, project, "*.yml"))
     yml_files.remove(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.yml"))
+
     return yml_files
 
 
@@ -96,10 +97,11 @@ def _build_check_specifier(dct, check_prefix, check_number):
     """
     # Clone the dictionary using empty strings for None values
     d = dict([(key, value or "") for key, value in dct.items()])
-    d["kwargs"] = d["modifiers"] or {}
+    d["kwargs"] = d.get("modifiers", {})
      
     d["vocabulary_ref"] = d.get("vocabulary_ref", "")
     d["comments"] = d.get("comments", "")
+    d["check_level"] = d.get("check_level", "HIGH")
 
     # Get class to work with
     cls = get_check_class(d["check_name"])
@@ -119,12 +121,13 @@ def _build_check_specifier(dct, check_prefix, check_number):
     return d
 
 
-def parse_checks_definitions(check_defn_file):
+def parse_checks_definitions(project, check_defn_file):
     """
     Parses input files defining:
       - plugin interface to compliance checker class
       - a list of checks to implement within that class.
 
+    :param project: Project name [string]
     :param check_defn_file: file path - defining the interface and checks [string]
     :return: tuple of (plugin interface dict, list of dictionaries of checks)
     """
@@ -132,9 +135,18 @@ def parse_checks_definitions(check_defn_file):
     with open(check_defn_file) as reader:
         content = yaml.load(reader, Loader=yaml.Loader)
 
-    # Check plugin interface is always first dictionary
+    # Check plugin interface is always first dictionary expand it
     plugin_interface = content[0]
-    check_prefix = plugin_interface['checkIdPrefix']
+    pi = plugin_interface
+    pid = pi['ccPluginDetails'].replace(" Check", "")
+    pi['ccPluginClass'] = "{}Check".format(pid.replace(" ", ""))
+    pi['ccPluginId'] = pid.lower().replace(" ", "-")
+
+    project_metadata = get_project_metadata(project)
+    pi['ccPluginPackage'] = "{}.{}".format(project_metadata['plugin'],
+                                           pid.lower().replace(" ", "_"))
+
+    check_prefix = pi['checkIdPrefix']
 
     checks = []
 
@@ -318,29 +330,22 @@ def write_cc_plugin_modules(project, plugin_interfaces, checks_dict):
         print "Wrote: {}".format(output_path)
 
 
-def display_plugin_entry_points(project, plugin_interfaces, checks_dict):
+def display_plugin_entry_points(plugin_interfaces):
     """
     Display plugin entry points (for `setup.py` file).
 
     :param plugin_interfaces: plugin interfaces dicts
     """
     keys = plugin_interfaces.keys()
-    
+
     for key in sorted(keys):
         pi_dict = plugin_interfaces[key]
-        s = "            '{} = {}:{}',".format(key, pi_dict['ccPluginPackage'], 
+        s = "            '{} = {}:{}',".format(key, pi_dict['ccPluginPackage'],
                                                pi_dict['ccPluginClass'])
         print(s)
 
-"""
- ppp.items()[0]
-('ukcp18-coords', {'checklibPackage': 'checklib.register.nc_file_checks_register', 'ccPluginPackage': 'cc_plugin_ukcp18.ukcp18_coords', 'description': 'Check lat, lon coordinate information in UKCP18 files', 'ccPluginClass': 'UKCP18CoordinatesLatLonCheck', 'ccPluginId': 'ukcp18-coords', 'checkIdPrefix': 'cllc', 'ccPluginTemplate': 'BaseNCCheck'})
-
-            'ukcp18-file-info = cc_plugin_ukcp18.ukcp18_file_info:UKCP18FileInfoCheck',
-            'ukcp18-file-structure = cc_plugin_ukcp18.ukcp18_file_structure:UKCP18FileStructureCheck',
-            'ukcp18-global-attrs = cc_plugin_ukcp18.ukcp18_global_attrs:UKCP18GlobalAttrsCheck',
-            'ukcp18-coords = cc_plugin_ukcp18.ukcp18_coords:UKCP18CoordinatesCheck'
-"""
+    print("\nAll entry points:\n")
+    print(" ".join(["--test {}".format(test) for test in sorted(keys)]))
 
 def run(project):
     """
@@ -360,7 +365,7 @@ def run(project):
 
     # Write a JSON file for each plugin
     for check_defn_file in check_defn_files:
-        plugin_interface, checks = parse_checks_definitions(check_defn_file)
+        plugin_interface, checks = parse_checks_definitions(project, check_defn_file)
         plugin_id = plugin_interface['ccPluginId']
 
         plugin_interfaces[plugin_id] = plugin_interface
@@ -373,7 +378,7 @@ def run(project):
     write_cc_plugin_modules(project, plugin_interfaces, checks_dict)
 
     # Display plugin entry points (for `setup.py` file)
-    display_plugin_entry_points(project, plugin_interfaces, checks_dict)
+    display_plugin_entry_points(plugin_interfaces)
 
 
 def main():

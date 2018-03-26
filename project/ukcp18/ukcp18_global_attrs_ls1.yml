@@ -1,11 +1,8 @@
 ---
 # Plugin interface details
-- ccPluginClass:    UKCP18GlobalAttrsLS1Check
+- ccPluginDetails:  UKCP18 Global Attrs LS1 Check
   description:      Check core LS1 global attributes in UKCP18 files
-  ccPluginId:       ukcp18-global-attrs-ls1
-  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_global_attrs_ls1
   ccPluginTemplate: BaseNCCheck
-  checklibPackage:  checklib.register.nc_file_checks_register
   checkIdPrefix:    gatls1
 
 # Checks

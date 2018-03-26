@@ -1,28 +1,16 @@
 ---
 # Plugin interface details
-- ccPluginClass:    UKCP18LatLonFileCheck
+- ccPluginDetails:  UKCP18 Lat Lon File Check
   description:      Check content of UKCP18 Lat/Lon files
-  ccPluginId:       ukcp18-latlon-file
-  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_latlon_file
   ccPluginTemplate: BaseNCCheck
-  checklibPackage:  checklib.register.nc_coords_checks_register
   checkIdPrefix:    latlonf
 
 # Checks
 - check_name:     NCCoordVarHasBoundsCheck
-  check_level:    HIGH
-  vocabulary_ref:
   modifiers:     {'var_id': 'longitude'}
-  comments:     
 
 - check_name:     NCCoordVarHasBoundsCheck
-  check_level:    HIGH
-  vocabulary_ref:
   modifiers:     {'var_id': 'latitude'}
-  comments:
 
 - check_name:     NCCoordVarHasBoundsCheck
-  check_level:    HIGH
-  vocabulary_ref:
   modifiers:     {'var_id': 'time'}
-  comments:

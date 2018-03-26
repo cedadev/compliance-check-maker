@@ -15,7 +15,8 @@ from compliance_checker.base import Result, GenericFile
 os.environ["ESSV_VOCABS_ACTIVE"] = "{{ project_metadata.vocab_authority }}"
 
 # Import checklib
-import {{ details.checklibPackage }} as check_package
+import checklib.checks
+
 
 class {{ details.ccPluginClass }}(object):
     register_checker = True
@@ -28,7 +29,7 @@ class {{ details.ccPluginClass }}(object):
 
     {% for check in checks %}
     def check_{{ check.check_id }}(self, ds):
-        return check_package.{{ check.check_name }}(kwargs={{ check.kwargs }},
+        return checklib.checks.{{ check.check_name }}(kwargs={{ check.kwargs }},
                                                     level="{{ check.check_level }}",
                                                     vocabulary_ref="{{ check.vocabulary_ref }}")(ds.filepath())
     {% endfor %}

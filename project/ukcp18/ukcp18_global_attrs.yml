@@ -1,59 +1,38 @@
 ---
 # Plugin interface details
-- ccPluginClass:    UKCP18GlobalAttrsCheck
+- ccPluginDetails:  UKCP18 Global Attrs Check
   description:      Check core global attributes in UKCP18 files
-  ccPluginId:       ukcp18-global-attrs
-  ccPluginPackage:  cc_plugin_ukcp18.ukcp18_global_attrs
   ccPluginTemplate: BaseNCCheck
-  checklibPackage:  checklib.register.nc_file_checks_register
   checkIdPrefix:    gatc
 
 # Checks
 - check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref:
   modifiers:      {'attribute': 'Conventions', 'regex': 'CF-1\.5'}
-  comments:
 
 - check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref:
   modifiers:      {'attribute': 'source', 'regex': '.{4,}'}
   comments:       Should represent the original data source(s). E.g. 'HadGEM3-ES runs'.
 
 - check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref: 
   modifiers:      {'attribute': 'project', 'regex': 'UKCP18'}
   comments:       Must be 'UKCP18'
 
 - check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref:
   modifiers:      {'attribute': 'contact', 'regex': '.{4,}'}
-  comments:
 
 - check_name:     GlobalAttrRegexCheck
   check_level:    MEDIUM
-  vocabulary_ref:
   modifiers:      {'attribute': 'references', 'regex': '.{4,}'}
-  comments:
-
-- check_name:     GlobalAttrRegexCheck 
-  check_level:    HIGH
-  vocabulary_ref:
-  modifiers:      {'attribute': 'version', 'regex': 'v\d{8}'}
-  comments:
 
 - check_name:     GlobalAttrRegexCheck
-  check_level:    HIGH
-  vocabulary_ref:
+  modifiers:      {'attribute': 'version', 'regex': 'v\d{8}'}
+
+- check_name:     GlobalAttrRegexCheck
   modifiers:      {'attribute': 'title', 'regex': '.{4,}'}
   comments:       Should be a succinct description of the data.
 
 - check_name:     GlobalAttrRegexCheck
   check_level:    MEDIUM
-  vocabulary_ref:
   modifiers:      {'attribute': 'creation_date', 'regex': '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*'}
   comments:       Format is YYYY-MM-DDThh:mm:ss
 

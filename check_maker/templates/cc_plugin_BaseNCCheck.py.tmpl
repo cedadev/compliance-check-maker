@@ -15,7 +15,7 @@ from compliance_checker.base import Result, BaseNCCheck
 os.environ["ESSV_VOCABS_ACTIVE"] = "{{ project_metadata.vocab_authority }}"
 
 # Import checklib
-import {{ details.checklibPackage }} as check_package
+import checklib.checks
 
 
 class {{ details.ccPluginClass }}(BaseNCCheck):
@@ -23,12 +23,13 @@ class {{ details.ccPluginClass }}(BaseNCCheck):
     name = '{{ details.ccPluginId }}'
 
 
+
     def setup(self, ds):
         pass
 
     {% for check in checks %}
     def check_{{ check.check_id }}(self, ds):
-        return check_package.{{ check.check_name }}(kwargs={{ check.kwargs }},
+        return checklib.checks.{{ check.check_name }}(kwargs={{ check.kwargs }},
                                                     level="{{ check.check_level }}",
                                                     vocabulary_ref="{{ check.vocabulary_ref }}")(ds)
     {% endfor %}
