@@ -13,3 +13,7 @@
 
 - check_name:     MainVariableAttributeCheck
   modifiers:      {'attr_name': '_FillValue', 'attr_value': 1e20}
+
+- check_name:     NCMainVariableMetadataCheck
+  modifiers:      {'pyessv_namespace': 'variable'}
+  vocabulary_ref: ukcp:ukcp18
