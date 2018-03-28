@@ -6,4 +6,4 @@
   vocab_authority:  ncas
   vocab_scope:      amf
   url:              https://www.ncas.ac.uk/en/amf-menu 
-  checks_version:   0.1.0
+  checks_version:   0.2
