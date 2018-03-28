@@ -21,6 +21,8 @@ import checklib.checks
 class {{ details.ccPluginClass }}(object):
     register_checker = True
     name = '{{ details.ccPluginId }}'
+    _cc_spec = '{{ details.ccPluginId }}'
+    _cc_spec_version = '{{ project_metadata.checks_version }}'
     supported_ds = [GenericFile, Dataset]
 
 
