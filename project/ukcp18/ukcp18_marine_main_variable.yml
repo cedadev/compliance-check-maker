@@ -1,15 +1,12 @@
 ---
 # Plugin interface details
-- ccPluginDetails:  UKCP18 Land Main Variable Check
-  description:      Check structure of UKCP18 main variables
+- ccPluginDetails:  UKCP18 Marine Main Variable Check
+  description:      Check structure of UKCP18 main marine variables
   ccPluginTemplate: BaseNCCheck
-  checkIdPrefix:    lmvc
+  checkIdPrefix:    mmvc
 
 # Checks
 - check_name:     OneMainVariablePerFileCheck
-
-- check_name:     MainVariableAttributeCheck
-  modifiers:      {'attr_name': 'cell_methods', 'attr_value': 'time: mean'}
 
 - check_name:     MainVariableAttributeCheck
   modifiers:      {'attr_name': '_FillValue', 'attr_value': 1e20}
