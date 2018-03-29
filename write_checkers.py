@@ -29,6 +29,7 @@ CHECK_LIB_GIT_REPO = "https://github.com/cedadev/compliance-check-lib"
 
 OUTPUT_DIR = "output"
 INPUTS_DIR = "project"
+__INCLUDE_PATTERN__ = "__INCLUDE__"
 
 CHECK_ATTRIBUTE_MAP = OD([
     ("check_id", "Check ID"),
@@ -58,7 +59,7 @@ def get_check_defn_files(project):
     :param project: project ID [string].
     :return: list of file paths.
     """
-    yml_files = glob.glob(os.path.join(INPUTS_DIR, project, "*.yml"))
+    yml_files = glob.glob(os.path.join(INPUTS_DIR, project, "[a-zA-Z0-9]*.yml"))
     yml_files.remove(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.yml"))
 
     return yml_files
@@ -70,8 +71,7 @@ def get_project_metadata(project):
 
     :return: dictionary of metadata about the project.
     """
-    with open(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.yml")) as reader:
-        return yaml.load(reader, Loader=yaml.Loader)[0]
+    return _read_yaml(os.path.join(INPUTS_DIR, project, "PROJECT_METADATA.yml"))[0]
 
 
 def _parse_kwargs_string(s):
@@ -85,19 +85,21 @@ def _parse_kwargs_string(s):
     return d
 
 
-def _build_check_specifier(dct, check_prefix, check_number):
+def _build_check_specifier(dct, check_prefix, plugin_interface, check_number):
     """
     Parse dictionary `dct` defining check and combines it with information from
     the checklib registers to create and return detailed dictionary.
 
     :param dct: dictionary of input details for check
     :param check_prefix: prefix string to start each check with
+    :param plugin_interface: plugin ID
     :param check_number: number for this check (integer)
     :return: dictionary defining details of a check.
     """
     # Clone the dictionary using empty strings for None values
     d = dict([(key, value or "") for key, value in dct.items()])
     d["kwargs"] = d.get("modifiers", {})
+    d["plugin_id"] = plugin_interface
      
     d["vocabulary_ref"] = d.get("vocabulary_ref", "")
     d["comments"] = d.get("comments", "")
@@ -121,6 +123,20 @@ def _build_check_specifier(dct, check_prefix, check_number):
     return d
 
 
+def _read_yaml(fpath, loader=yaml.Loader):
+    """
+    Returns contents of YAML file as parsed by `yaml.load`.
+
+    :param fpath: file path
+    :param loader: Loader class.
+    :return: contents of YAML file
+    """
+    with open(fpath, 'r') as reader:
+        contents = yaml.load(reader, Loader=loader)
+
+    return contents
+
+
 def parse_checks_definitions(project, check_defn_file):
     """
     Parses input files defining:
@@ -132,12 +148,12 @@ def parse_checks_definitions(project, check_defn_file):
     :return: tuple of (plugin interface dict, list of dictionaries of checks)
     """
     # Read in the tab-separated set of checks for this set of checks
-    with open(check_defn_file) as reader:
-        content = yaml.load(reader, Loader=yaml.Loader)
+    content = _read_yaml(check_defn_file)
 
     # Check plugin interface is always first dictionary expand it
     plugin_interface = content[0]
     pi = plugin_interface
+
     pid = pi['ccPluginDetails'].replace(" Check", "")
     pi['ccPluginClass'] = "{}Check".format(pid.replace(" ", ""))
     pi['ccPluginId'] = pid.lower().replace(" ", "-")
@@ -151,10 +167,30 @@ def parse_checks_definitions(project, check_defn_file):
     checks = []
 
     # Populate a list of checks from remaining dictionaries
-    for n, check_dict in enumerate(content[1:]):
-        d = _build_check_specifier(check_dict, check_prefix, n + 1)
-        d["plugin_id"] = plugin_interface
-        checks.append(d)
+    count = 1
+    for check_dict in content[1:]:
+
+        # If an "__INCLUDE__" directive used: then include checks from it
+        if __INCLUDE_PATTERN__ in check_dict.keys():
+            yaml_path = check_dict[__INCLUDE_PATTERN__]
+
+            if not os.path.isfile(yaml_path):
+                yaml_path = os.path.join('project/{}'.format(project), yaml_path)
+
+            included_checks = _read_yaml(yaml_path)
+
+            for included_check_dict in included_checks:
+                d = _build_check_specifier(included_check_dict, check_prefix,
+                                           plugin_interface, count)
+                checks.append(d)
+                count += 1
+
+        # Else just parse this check from `check_dict`
+        else:
+            d = _build_check_specifier(check_dict, check_prefix,
+                                       plugin_interface, count)
+            checks.append(d)
+            count += 1
 
     # Check check IDs are unique
     check_ids = [check["check_id"] for check in checks]

@@ -23,4 +23,4 @@
   modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
   comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
 
-
+- __INCLUDE__:    __ukcp18_global_attrs.yml
