@@ -7,10 +7,20 @@
 
 # Checks
 - check_name:     NCCoordVarHasBoundsCheck
-  modifiers:     {'var_id': 'projection_x_coordinate'}
+  modifiers:      {'var_id': 'projection_x_coordinate'}
+
+- check_name:     VariableTypeCheck
+  modifiers:      {'dtype': 'float64', 'var_id': 'projection_x_coordinate'}
 
 - check_name:     NCCoordVarHasBoundsCheck
-  modifiers:     {'var_id': 'projection_y_coordinate'}
+  modifiers:      {'var_id': 'projection_y_coordinate'}
+
+- check_name:     VariableTypeCheck
+  modifiers:      {'dtype': 'float64', 'var_id': 'projection_y_coordinate'}
 
 - check_name:     NCCoordVarHasBoundsCheck
-  modifiers:     {'var_id': 'time'}
+  modifiers:      {'var_id': 'time'}
+
+- check_name:     NCVariableMetadataCheck
+  modifiers:      {'var_id': 'transverse_mercator', 'pyessv_namespace': 'variable'}
+  vocabulary_ref: ukcp:ukcp18

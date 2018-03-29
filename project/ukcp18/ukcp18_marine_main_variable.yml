@@ -11,6 +11,9 @@
 - check_name:     MainVariableAttributeCheck
   modifiers:      {'attr_name': '_FillValue', 'attr_value': 1e20}
 
+- check_name:     MainVariableTypeCheck
+  modifiers:      {'dtype': 'float32'}
+
 - check_name:     NCMainVariableMetadataCheck
   modifiers:      {'pyessv_namespace': 'variable',
                    'ignores': ['cmip6_cmor_tables_row_id', 'cmip6_name',
