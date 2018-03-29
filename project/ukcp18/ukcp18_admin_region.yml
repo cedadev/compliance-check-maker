@@ -1,0 +1,11 @@
+---
+# Plugin interface details
+- ccPluginDetails:  UKCP18 Admin Region Check
+  description:      Check content of UKCP18 Admin Region files
+  ccPluginTemplate: BaseNCCheck
+  checkIdPrefix:    region
+
+# Checks
+- check_name:     NCArrayMatchesVocabTermsCheck
+  modifiers:      {'var_id': 'geo_region', 'pyessv_namespace': 'admin_region'}
+  vocabulary_ref: ukcp:ukcp18
