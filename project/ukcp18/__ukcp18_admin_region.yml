@@ -1,0 +1,8 @@
+---
+# Use with __INCLUDE__ option
+# UKCP18 Admin Region Checks
+
+# Checks
+- check_name:     NCArrayMatchesVocabTermsCheck
+  modifiers:      {'var_id': 'geo_region', 'pyessv_namespace': 'admin_region'}
+  vocabulary_ref: ukcp:ukcp18

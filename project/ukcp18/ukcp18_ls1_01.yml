@@ -6,6 +6,8 @@
   checkIdPrefix:    gatls1
 
 # Checks
+- __INCLUDE__:    __ukcp18_global_attrs.yml
+
 - check_name:     ValidGlobalAttrsMatchFileNameCheck
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
@@ -22,5 +24,3 @@
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
   comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
-
-- __INCLUDE__:    __ukcp18_global_attrs.yml

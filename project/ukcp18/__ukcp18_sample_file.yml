@@ -1,0 +1,10 @@
+---
+# Use with __INCLUDE__ option
+# UKCP18 Sample Checks
+
+# Checks
+- check_name:     NCCoordVarHasLengthInVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:     {'var_id': 'sample'}
+

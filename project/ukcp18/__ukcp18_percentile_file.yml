@@ -1,0 +1,9 @@
+---
+# Use with __INCLUDE__ option
+# UKCP18 Percentile Checks
+
+# Checks
+- check_name:     NCCoordVarHasValuesInVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:     {'var_id': 'percentile'}
