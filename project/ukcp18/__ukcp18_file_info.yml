@@ -1,9 +1,6 @@
 ---
-# Plugin interface details
-- ccPluginDetails:  UKCP18 File Info Check
-  description:      Check file names and external information about UKCP18 files
-  ccPluginTemplate: BaseFileCheck
-  checkIdPrefix:    flic
+# Use with __INCLUDE__ option
+# UKCP18 File Info Checks
 
 # Checks
 - check_name:     FileSizeCheck 

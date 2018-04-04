@@ -1,6 +1,6 @@
 ---
 # Use with __INCLUDE__ option
-# UKCP18 Global Attrs Check
+# UKCP18 Global Attr Checks
 
 # Checks
 - check_name:     GlobalAttrRegexCheck

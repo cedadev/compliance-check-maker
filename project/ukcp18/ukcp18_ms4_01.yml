@@ -1,0 +1,20 @@
+---
+# Plugin interface details
+- ccPluginDetails:  UKCP18 MS401 Check
+  description:      Check structure of UKCP18 MS401 variables
+  ccPluginTemplate: BaseNCCheck
+  checkIdPrefix:    ms401
+
+# Checks
+- __INCLUDE__:    __ukcp18_file_info.yml
+- __INCLUDE__:    __ukcp18_file_structure.yml
+- __INCLUDE__:    __ukcp18_global_attrs.yml
+- __INCLUDE__:    __ukcp18_main_variable.yml
+- __INCLUDE__:    __ukcp18_time_lat_lon.yml
+
+- check_name:     ValidGlobalAttrsMatchFileNameCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'delimiter': '_', 'extension': '.nc',
+                   'order': 'variable~regex:marine-sim~regex:(timeseries|CNRM-CM5|EC-EARTH|HadGEM2-ES|IPSL-CM5A-MR|MPI-ESM-LR)~regex:hist~regex:^\d{4}060100-\d{4}053023$',
+                   'ignore_attr_checks': ['variable']}

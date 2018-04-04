@@ -1,0 +1,26 @@
+---
+# Use with __INCLUDE__ option
+# UKCP18 Time Lat Lon Checks
+
+# Checks
+- check_name:     NCCoordVarHasBoundsCheck
+  modifiers:      {'var_id': 'time'}
+
+- check_name:     NCCoordVarHasBoundsCheck
+  modifiers:      {'var_id': 'latitude'}
+
+- check_name:     NCCoordVarHasBoundsCheck
+  modifiers:      {'var_id': 'longitude'}
+
+- check_name:     NetCDFDimensionCheck
+  modifiers:      {'dim_id': 'time', 'pyessv_namespace': 'coordinate'}
+  vocabulary_ref: ukcp:ukcp18
+
+- check_name:     NetCDFDimensionCheck
+  modifiers:      {'dim_id': 'latitude', 'pyessv_namespace': 'coordinate'}
+  vocabulary_ref: ukcp:ukcp18
+
+- check_name:     NetCDFDimensionCheck
+  modifiers:      {'dim_id': 'longitude', 'pyessv_namespace': 'coordinate'}
+  vocabulary_ref: ukcp:ukcp18
+

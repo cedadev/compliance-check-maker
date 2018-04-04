@@ -1,9 +1,6 @@
 ---
-# Plugin interface details
-- ccPluginDetails:  UKCP18 Marine Main Variable Check
-  description:      Check structure of UKCP18 main marine variables
-  ccPluginTemplate: BaseNCCheck
-  checkIdPrefix:    mmvc
+# Use with __INCLUDE__ option
+# UKCP18 Main Variable Checks
 
 # Checks
 - check_name:     OneMainVariablePerFileCheck
