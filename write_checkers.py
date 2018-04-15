@@ -123,6 +123,62 @@ def _build_check_specifier(dct, check_prefix, plugin_interface, check_number):
     return d
 
 
+class ChecksList(object):
+    """
+    A class to manage a list of checks and their numeric IDs.
+    """
+
+    def __init__(self, plugin_interface, prefix):
+        self.plugin_interface = plugin_interface
+        self.prefix = prefix
+        self.checks = []
+
+    def add_check(self, check_dict):
+        """
+        Takes a dictionary of check details, makes a new check and appends
+        it to `self.checks`.
+
+        :param check_dict: dictionary of checks
+        :return: None
+        """
+        n = len(self.checks) + 1
+        check = _build_check_specifier(check_dict, self.prefix,
+                                       self.plugin_interface, n)
+        self.checks.append(check)
+        self._validate_check_ids()
+
+    def _validate_check_ids(self):
+        "Validate check IDs are unique."
+        check_ids = [check["check_id"] for check in self.checks]
+        if len(check_ids) != len(set(check_ids)):
+            raise Exception("Duplicate check IDs are not allowed. Found: {}".format(check_ids))
+
+
+def add_checks(checks_list, checks, project):
+    """
+    Adds a set of checks to `check_list`.
+
+    :param checks_list: Instance of ChecksList
+    :param checks: list of checks to add
+    :param project: Project name [string]
+    :return: None
+    """
+    for check in checks:
+
+        # If an "__INCLUDE__" directive used: then include checks from it
+        if __INCLUDE_PATTERN__ in check.keys():
+            yaml_path = check[__INCLUDE_PATTERN__]
+
+            if not os.path.isfile(yaml_path):
+                yaml_path = os.path.join('project/{}'.format(project), yaml_path)
+
+            included_checks = _read_yaml(yaml_path)
+            add_checks(checks_list, included_checks, project)
+
+        else:
+            checks_list.add_check(check)
+
+
 def _read_yaml(fpath, loader=yaml.Loader):
     """
     Returns contents of YAML file as parsed by `yaml.load`.
@@ -148,12 +204,14 @@ def parse_checks_definitions(project, check_defn_file):
     :return: tuple of (plugin interface dict, list of dictionaries of checks)
     """
     # Read in the tab-separated set of checks for this set of checks
-    content = _read_yaml(check_defn_file)
+    yaml_content = _read_yaml(check_defn_file)
+    check_defns = yaml_content[1:]
 
     # Check plugin interface is always first dictionary expand it
-    plugin_interface = content[0]
+    plugin_interface = yaml_content[0]
     pi = plugin_interface
 
+    # Get generic plugin details from YAML file
     pid = pi['ccPluginDetails'].replace(" Check", "")
     pi['ccPluginClass'] = "{}Check".format(pid.replace(" ", ""))
     pi['ccPluginId'] = pid.lower().replace(" ", "-")
@@ -161,43 +219,13 @@ def parse_checks_definitions(project, check_defn_file):
     project_metadata = get_project_metadata(project)
     pi['ccPluginPackage'] = "{}.{}".format(project_metadata['plugin'],
                                            pid.lower().replace(" ", "_"))
-
     check_prefix = pi['checkIdPrefix']
 
-    checks = []
+    # Create ChecksList object and compile list of checks
+    checks_list = ChecksList(plugin_interface, check_prefix)
+    add_checks(checks_list, check_defns, project)
 
-    # Populate a list of checks from remaining dictionaries
-    count = 1
-    for check_dict in content[1:]:
-
-        # If an "__INCLUDE__" directive used: then include checks from it
-        if __INCLUDE_PATTERN__ in check_dict.keys():
-            yaml_path = check_dict[__INCLUDE_PATTERN__]
-
-            if not os.path.isfile(yaml_path):
-                yaml_path = os.path.join('project/{}'.format(project), yaml_path)
-
-            included_checks = _read_yaml(yaml_path)
-
-            for included_check_dict in included_checks:
-                d = _build_check_specifier(included_check_dict, check_prefix,
-                                           plugin_interface, count)
-                checks.append(d)
-                count += 1
-
-        # Else just parse this check from `check_dict`
-        else:
-            d = _build_check_specifier(check_dict, check_prefix,
-                                       plugin_interface, count)
-            checks.append(d)
-            count += 1
-
-    # Check check IDs are unique
-    check_ids = [check["check_id"] for check in checks]
-    if len(check_ids) != len(set(check_ids)):
-        raise Exception("Duplicate check IDs are not allowed. Found: {}".format(check_ids))
-
-    return plugin_interface, checks
+    return plugin_interface, checks_list.checks
 
 
 def _html_tidy_cell_item(item, key):

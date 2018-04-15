@@ -1,25 +1,9 @@
 ---
-# Plugin interface details
-- ccPluginDetails:  UKCP18 Land Main Variable Check
-  description:      Check structure of UKCP18 main variables
-  ccPluginTemplate: BaseNCCheck
-  checkIdPrefix:    lmvc
+# Use with __INCLUDE__ option
+# UKCP18 Land Main Variable Checks
 
 # Checks
-- check_name:     OneMainVariablePerFileCheck
+- __INCLUDE__:    __ukcp18_main_variable.yml
 
 - check_name:     MainVariableAttributeCheck
   modifiers:      {'attr_name': 'cell_methods', 'attr_value': 'time: mean'}
-
-- check_name:     MainVariableAttributeCheck
-  modifiers:      {'attr_name': '_FillValue', 'attr_value': 1e20}
-
-- check_name:     MainVariableTypeCheck
-  modifiers:      {'dtype': 'float32'}
-
-- check_name:     NCMainVariableMetadataCheck
-  modifiers:      {'pyessv_namespace': 'variable',
-                   'ignores': ['cmip6_cmor_tables_row_id', 'cmip6_name',
-                              'cmip6_standard_name', 'notes', 'strand',
-                              'time_averaging', 'time_step', 'um_stash']}
-  vocabulary_ref: ukcp:ukcp18

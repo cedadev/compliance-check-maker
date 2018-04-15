@@ -1,0 +1,24 @@
+---
+# Use with __INCLUDE__ option
+# UKCP18 LS1 Checks
+
+# Checks
+- __INCLUDE__:    __ukcp18_global_attrs.yml
+- __INCLUDE__:    __ukcp18_land_main_variable.yml
+
+- check_name:     ValidGlobalAttrsMatchFileNameCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'delimiter': '_', 'extension': '.nc',
+                   'order': 'variable~scenario~collection~domain~resolution~coordinate~frequency~regex:',
+                   'ignore_attr_checks': ['variable']}
+
+- check_name:     GlobalAttrRegexCheck
+  check_level:    MEDIUM
+  modifiers:      {'attribute': 'collection', 'regex': 'land-prob'}
+
+- check_name:     GlobalAttrVocabCheck
+  check_level:    HIGH
+  vocabulary_ref: ukcp:ukcp18
+  modifiers:      {'attribute': 'frequency', 'vocab_lookup': 'canonical_name'}
+  comments:       The 'frequency' global attribute must exist and have a value present in the relevant vocabulary.
