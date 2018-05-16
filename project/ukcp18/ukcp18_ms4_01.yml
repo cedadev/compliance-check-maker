@@ -1,7 +1,7 @@
 ---
 # Plugin interface details
 - ccPluginDetails:  UKCP18 MS401 Check
-  description:      Check structure of UKCP18 MS401 variables
+  description:      Check MS4.01 UKCP18 files
   ccPluginTemplate: BaseNCCheck
   checkIdPrefix:    ms401
 

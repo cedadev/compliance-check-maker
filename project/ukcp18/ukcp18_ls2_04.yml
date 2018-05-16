@@ -1,0 +1,11 @@
+---
+# Plugin interface details
+- ccPluginDetails:  UKCP18 LS204 Check
+  description:      Check LS2.04 UKCP18 files
+  ccPluginTemplate: BaseNCCheck
+  checkIdPrefix:    ls204
+
+# Checks
+- __INCLUDE__:    __ukcp18_ls2.yml
+- __INCLUDE__:    __ukcp18_country.yml
+

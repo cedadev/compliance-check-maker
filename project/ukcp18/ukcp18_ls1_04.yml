@@ -1,9 +1,9 @@
 ---
 # Plugin interface details
-- ccPluginDetails:  UKCP18 LS102 Check
-  description:      Check LS1.02 UKCP18 files
+- ccPluginDetails:  UKCP18 LS104 Check
+  description:      Check LS1.04 UKCP18 files
   ccPluginTemplate: BaseNCCheck
-  checkIdPrefix:    ls102
+  checkIdPrefix:    ls104
 
 # Checks
 - __INCLUDE__:    __ukcp18_ls1.yml

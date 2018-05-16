@@ -1,0 +1,11 @@
+---
+# Plugin interface details
+- ccPluginDetails:  UKCP18 LS203 Check
+  description:      Check LS2.03 UKCP18 files
+  ccPluginTemplate: BaseNCCheck
+  checkIdPrefix:    ls203
+
+# Checks
+- __INCLUDE__:    __ukcp18_ls2.yml
+- __INCLUDE__:    __ukcp18_river_basin.yml
+

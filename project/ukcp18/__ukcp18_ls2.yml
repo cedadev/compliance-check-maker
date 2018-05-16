@@ -12,7 +12,7 @@
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'delimiter': '_', 'extension': '.nc',
-                   'order': 'variable~scenario~collection~domain~resolution~coordinate~frequency~regex:^(?:\d{2}){2,6}(?:$|-(?:\d{2}){2,6}$)',
+                   'order': 'variable~scenario~collection~domain~resolution~ensemble_member~frequency~regex:^(?:\d{2}){2,6}(?:$|-(?:\d{2}){2,6}$)',
                    'ignore_attr_checks': ['variable']}
 
 - check_name:     GlobalAttrRegexCheck

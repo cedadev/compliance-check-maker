@@ -1,0 +1,11 @@
+---
+# Plugin interface details
+- ccPluginDetails:  UKCP18 LS201 Check
+  description:      Check LS2.01 UKCP18 files
+  ccPluginTemplate: BaseNCCheck
+  checkIdPrefix:    ls201
+
+# Checks
+- __INCLUDE__:    __ukcp18_ls2.yml
+- __INCLUDE__:    __ukcp18_osgb_file.yml
+
