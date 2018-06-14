@@ -7,3 +7,4 @@
   vocab_scope:      eustace
   url:              https://www.eustaceproject.eu
   checks_version:   0.2
+  plugin:           cc_plugin_eustace

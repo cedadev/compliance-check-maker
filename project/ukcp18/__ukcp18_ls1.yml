@@ -3,8 +3,6 @@
 # UKCP18 LS1 Checks
 
 # Checks
-- __INCLUDE__:    __ukcp18_file_structure.yml
-- __INCLUDE__:    __ukcp18_file_info.yml
 - __INCLUDE__:    __ukcp18_global_attrs.yml
 - __INCLUDE__:    __ukcp18_land_main_variable.yml
 
@@ -12,7 +10,7 @@
   check_level:    HIGH
   vocabulary_ref: ukcp:ukcp18
   modifiers:      {'delimiter': '_', 'extension': '.nc',
-                   'order': 'variable~scenario~collection~domain~resolution~coordinate~frequency~regex:^(?:\d{2}){2,6}(?:$|-(?:\d{2}){2,6}$)',
+                   'order': 'variable~scenario~collection~domain~resolution~prob_data_type~frequency~regex:^(?:\d{2}){2,6}(?:$|-(?:\d{2}){2,6}$)',
                    'ignore_attr_checks': ['variable']}
 
 - check_name:     GlobalAttrRegexCheck

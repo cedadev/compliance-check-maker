@@ -6,8 +6,6 @@
   checkIdPrefix:    ms401
 
 # Checks
-- __INCLUDE__:    __ukcp18_file_info.yml
-- __INCLUDE__:    __ukcp18_file_structure.yml
 - __INCLUDE__:    __ukcp18_global_attrs.yml
 - __INCLUDE__:    __ukcp18_main_variable.yml
 - __INCLUDE__:    __ukcp18_time_lat_lon.yml

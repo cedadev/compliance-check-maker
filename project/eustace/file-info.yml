@@ -19,5 +19,3 @@
 - check_name:     FileNameStructureCheck
   check_level:    HIGH
   modifiers:      {'delimiter': '_', 'extension': '.nc'}
-
-

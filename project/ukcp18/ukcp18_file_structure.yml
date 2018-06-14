@@ -1,0 +1,11 @@
+---
+# Plugin interface details
+- ccPluginDetails:  UKCP18 File Structure Check
+  description:      Check UKCP18 file structure
+  ccPluginTemplate: BaseNCCheck
+  checkIdPrefix:    fssc
+
+# Checks
+- check_name:     NetCDFFormatCheck
+  modifiers:      {'format': 'NETCDF4_CLASSIC'}
+

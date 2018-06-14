@@ -23,7 +23,11 @@ class {{ details.ccPluginClass }}(BaseNCCheck):
     name = '{{ details.ccPluginId }}'
     _cc_spec = '{{ details.ccPluginId }}'
     _cc_spec_version = '{{ project_metadata.checks_version }}'
-
+    _cc_display_headers = {
+        3: 'Required',
+        2: 'Recommended',
+        1: 'Suggested'
+    }
 
     def setup(self, ds):
         pass

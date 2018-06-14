@@ -1,8 +1,0 @@
----
-# Use with __INCLUDE__ option
-# UKCP18 File Structure Checks
-
-# Checks
-- check_name:     NetCDFFormatCheck
-  modifiers:      {'format': 'NETCDF4_CLASSIC'}
-

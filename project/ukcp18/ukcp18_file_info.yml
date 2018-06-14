@@ -1,6 +1,9 @@
 ---
-# Use with __INCLUDE__ option
-# UKCP18 File Info Checks
+# Plugin interface details
+- ccPluginDetails:  UKCP18 File Info Check
+  description:      Check UKCP18 file info
+  ccPluginTemplate: BaseFileCheck
+  checkIdPrefix:    fsic
 
 # Checks
 - check_name:     FileSizeCheck 
